@@ -1,8 +1,1 @@
-
-テスト 手嶋puss
-
-豊田もプッシュ
-
-大舘もプッシュ
-
-kimura shota
+# freemarket_sanmple_71b DB設計
