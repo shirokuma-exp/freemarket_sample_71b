@@ -1,8 +1,8 @@
 
-=======
-テスト　手嶋puss
+テスト 手嶋puss
 
 豊田もプッシュ
 
 大舘もプッシュ
->>>>>>> 77f091e50e1147977af7dbcaeecc0acd90525219
+
+kimura shota
