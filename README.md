@@ -9,6 +9,16 @@
 |name_kana|string|null: false|
 |birthday|date|null: false|
 |phone_number|integer|null: false|
+|sex|string|null: false|
+### Association
+- has_many :items
+- has_many :comments
+- has_one :card
+- has_one :address
+
+## addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
 |destination|string|null: false|
 |destination_kana|string|null: false|
 |postcode|integer|null: false|
@@ -16,11 +26,8 @@
 |city|string|null: false|
 |street|string|null: false|
 |building|string|null: false|
-|sex|string|null: false|
 ### Association
-- has_many :items
-- has_many :comments
-- has_one :card
+- belongs_to :user
 
 ## itemsテーブル
 |Column|Type|Options|
