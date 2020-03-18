@@ -26,6 +26,7 @@
 |city|string|null: false|
 |street|string|null: false|
 |building|string|null: false|
+|user_id|string|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
