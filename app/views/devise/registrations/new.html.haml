@@ -1,0 +1,50 @@
+%h2 Sign up
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .field
+    ニックネーム
+    = f.label :nickname
+    %br/
+    = f.text_field :nickname, autofocus: true
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+  .field
+    = f.label :password
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    %br/
+    = f.password_field :password, autocomplete: "new-password"
+  .field
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .field
+  名前
+  = f.label :name
+  %br/
+  = f.text_field :name, autofocus: true
+  .field
+  名前かな
+  = f.label :name_kana
+  %br/
+  = f.text_field :name_kana, autofocus: true
+  .field
+  誕生日
+  = f.label :birthday
+  %br/
+  = f.date_field  :birthday, autofocus: true
+  電話番号
+  = f.label :phone_number
+  %br/
+  = f.telephone_field  :phone_number, autofocus: true
+  .actions
+  性別
+  = f.label :sex
+  %br/
+  = f.text_field  :sex, autofocus: true
+  .actions
+    = f.submit "Sign up"
+= render "devise/shared/links"
