@@ -1,0 +1,46 @@
+.banner
+  .banner__main
+    .banner__main__top
+      だれでもかんたん、人生を変える<span style="color:#white; background-color:rgba(148,255,226,0.5);">フリマアプリ</span>
+    .banner__main__midd
+      今すぐ無料ダウンロード！
+    .banner__main__bottom
+      .banner__main__bottom__apple
+        =link_to image_tag('http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg', size: "180x53"), '#'
+      .banner__main__bottom__google
+        =link_to image_tag('http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg', size: "180x53"), '#'
+
+.h-footer
+  .h-footer__cont
+    .h-footer__cont__text
+      .h-footer__cont__text__info
+        .h-footer__cont__text__info__about
+          FURIMAについて
+        .h-footer__cont__text__info__list
+          =link_to '会社概要','#'
+          %br
+          =link_to 'プライバシーポリシー','#'
+          %br
+          =link_to 'FURIMA利用規約','#'
+          %br
+          =link_to 'ポイントに対する特約','#'
+      .h-footer__cont__text__info
+        .h-footer__cont__text__info__about
+          FURIMAを見る
+        .h-footer__cont__text__info__list
+          =link_to 'カテゴリー一覧','#'
+          %br
+          =link_to 'ブランド一覧','#'
+      .h-footer__cont__text__info
+        .h-footer__cont__text__info__about
+          ヘルプ＆ガイド
+        .h-footer__cont__text__info__list
+          =link_to 'FURIMAガイド','#'
+          %br
+          =link_to 'FURIMAロゴ利用ガイドライン','#'
+          %br
+          =link_to 'お知らせ','#'
+    .h-footer__cont__logo
+      =link_to image_tag('https://lh3.googleusercontent.com/tvfmTvZB8F_8B4bcMWRFdYELX7miM69kjqJ5FNowDIdUOpA54I2Wxmloh6DYmArtRPlRAg=s170', size: "165x45"), root_path
+    .h-footer__cont__license
+      ©︎FURIMA
