@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+} 
+
 .h-header{
   // background-color: black;
   height: 100px;
@@ -221,6 +225,4 @@
       text-decoration: none;
     }
   }
-* {
-  box-sizing: border-box;
 }
