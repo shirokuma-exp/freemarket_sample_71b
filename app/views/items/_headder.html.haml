@@ -18,9 +18,17 @@
             -# ブランドにカーソルをかぶせるとプルダウン式に項目が出てくる
             =link_to 'ブランド','#', class:'h-header__extra__frame__lower__left__brand'
         .h-header__extra__frame__lower__right
-          .h-header__extra__frame__lower__right__log
-            -# ログインをクリックするとログイン画面に遷移する
-            =link_to 'ログイン','#', class:'h-header__extra__frame__lower__right__log'
-          .h-header__extra__frame__lower__right__new
-            -# 新規会員登録をクリックするとサインアップ画面に遷移する
-            =link_to '新規会員登録','#', class:'h-header__extra__frame__lower__right__new'
+          - if user_signed_in?
+            .h-header__extra__frame__lower__right__log
+              -# ログインした状態ではログアウトボタンを表示させる
+              =link_to 'ログアウト', destroy_user_session_path , method: :delete, class:'h-header__extra__frame__lower__right__log'
+            .h-header__extra__frame__lower__right__new
+              -# 住所登録をクリックすると住所登録画面に遷移する
+              =link_to '住所登録','#', class:'h-header__extra__frame__lower__right__new'
+          - else
+            .h-header__extra__frame__lower__right__log
+              -# ログインをクリックするとログイン画面に遷移する
+              =link_to 'ログイン', new_user_session_path, class:'h-header__extra__frame__lower__right__log'
+            .h-header__extra__frame__lower__right__new
+              -# 新規会員登録をクリックするとサインアップ画面に遷移する
+              =link_to '新規会員登録', new_user_registration_path , class:'h-header__extra__frame__lower__right__new'
