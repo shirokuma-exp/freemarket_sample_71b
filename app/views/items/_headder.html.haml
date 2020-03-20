@@ -25,6 +25,9 @@
             .h-header__extra__frame__lower__right__new
               -# 住所登録をクリックすると住所登録画面に遷移する
               =link_to '住所登録','#', class:'h-header__extra__frame__lower__right__new'
+            .h-header__extra__frame__lower__right__new
+              -# マイページをクリックするとマイページ画面に遷移する
+              =link_to 'マイページ','#', class:'h-header__extra__frame__lower__right__myp'
           - else
             .h-header__extra__frame__lower__right__log
               -# ログインをクリックするとログイン画面に遷移する

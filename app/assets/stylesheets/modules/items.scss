@@ -88,18 +88,23 @@
             }
           }
           &__right{
-            width: 171px;
+            width: 250px;
             margin-left: 580px;
             display: flex;
             &__log{
-              width: 70px;
+              width: 150px;
               padding-left: 5px;
               // background-color: blue;
               color: black;
             }
             &__new{
-              width: 100px;
+              width: 140px;
               padding-left: 5px;
+              // background-color: red;
+              color: black;
+            }
+            &__myp{
+              width: 90px;
               // background-color: red;
               color: black;
             }
