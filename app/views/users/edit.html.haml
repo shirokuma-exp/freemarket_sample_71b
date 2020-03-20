@@ -12,12 +12,15 @@
               =link_to image_tag('http://furima.tokyo/assets/icon-search-60a83ada85216fe00789cd16065281694d9a08948275fef83683fadcf131d84d.svg', size: "20x20"), '#'
         .h-header__extra__frame__lower
           .h-header__extra__frame__lower__right
+            .h-header__extra__frame__lower__right__new
+              -# トップ画面に遷移する
+              =link_to 'トップ画面', root_path , class:'h-header__extra__frame__lower__right__myp'
             .h-header__extra__frame__lower__right__log
-              -# ログインした状態ではログアウトボタンを表示させる
+              -# ログアウトボタンを表示させる
               =link_to 'ログアウト', destroy_user_session_path , method: :delete, class:'h-header__extra__frame__lower__right__log'
             .h-header__extra__frame__lower__right__new
               -# カード登録をクリックするとカード登録画面に遷移する
-              =link_to 'カード登録','#', class:'h-header__extra__frame__lower__right__log'
+              =link_to 'カード登録','#', class:'h-header__extra__frame__lower__right__new'
   .mypagecontent
     .mypagecontent__all
       .mypagecontent__all__picture
