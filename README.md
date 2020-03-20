@@ -73,7 +73,7 @@
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string||
 ### Association
 - has_many :items
 
