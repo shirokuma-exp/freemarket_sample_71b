@@ -1,0 +1,57 @@
+.wrapper
+  = render 'items/headder'
+  .l-container.clearfix
+    -# = render 'users/side'
+    .mypage-content
+      %section.mypage-content__chapter-container
+        -# = flash[:touroku]
+        %h2.signup-main__chapter-head クレジットカード情報入力
+        .signup-main__content
+          -# pay_user_credit_card_index_path?
+          = form_tag(pay_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+            .field
+              .signup-main__form-group
+                %label.field-label カード番号
+                %span.signup-main__form-require 必須
+                .field-input
+                  = text_field_tag "number", "", class: "signup-main__input-default", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+                  %ul.signup-main__card-list
+                    %li
+                      = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/visa.svg?3850499208'), size: "49x20"
+                    %li
+                      = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/master-card.svg?3850499208'), size: "34x20"
+                    %li
+                      = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/saison-card.svg?3850499208'), size: "32x20"
+                    %li
+                      = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/jcb.svg?3850499208'), size: "34x20"
+                    %li
+                      = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/american_express.svg?3850499208'), size: "21x20"
+                    %li
+                      = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/dinersclub.svg?3850499208'), size: "32x20"
+                    %li
+                      = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/discover.svg?3850499208'), size: "32x20"
+            .field
+              .signup-main__form-group.signup-main__form-expire
+                %label.field-label 有効期限
+                %span.signup-main__form-require 必須
+                %br
+                .field-input
+                  = select_tag 'exp_month', options_for_select([["--",""],["01","1"], ["02","2"], ["03","3"], ["04","4"], ["05","5"], ["06","6"], ["07","7"], ["08","8"], ["09","9"], ["10","10"], ["11","11"], ["12","12"]],:selected=>"--")
+                  %span 月／
+                  = select_tag 'exp_year', options_for_select([["--",""],["20","2020"], ["21","2021"], ["22","2022"], ["23","2023"], ["24","2024"], ["25","2025"], ["26","2026"], ["27","2027"], ["28","2028"], ["29","2029"], ["30","2030"]],:selected=>"--")
+                  %span 年
+            .field
+              .signup-main__form-group
+                %label.field-label セキュリティコード
+                %span.signup-main__form-require 必須
+                %ul.signup-main__has-error-text{ id: 'security-code-error-wrapper' }
+                .signup-main__seqcode
+                  .signup-main__seqcode--text{ id: 'seqcode-tips-toggle' }
+                    %span.signup-main__form-question
+                      ?
+                    カード裏面の番号とは？
+                .field-input
+                  = text_field_tag "cvc", "", class: "signup-main__input-default", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+                  #card_token
+                  = submit_tag "追加する", id: "token_submit", class: 'signup-main__btn-default signup-main__btn-red'
+= render 'items/footer.html.haml'
