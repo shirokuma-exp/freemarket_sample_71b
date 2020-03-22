@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update] do
     resources :addresses, only: [:new, :create]
   end
+  resources :categories, only: [:new, :show, :index]
 end

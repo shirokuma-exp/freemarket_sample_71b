@@ -1,0 +1,4 @@
+%li.ca__parent
+  = link_to("#{parent.name}", category_path(id: parent.id), {class: "pare"})
+  %ul.ca__children
+    = render partial:'categories/header_child', collection: parent.children, as: "category"

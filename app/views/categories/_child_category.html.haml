@@ -1,0 +1,4 @@
+%li.ca__children__child
+  = link_to "#{category.name}", category_path(id: category.id)
+  %ul.grand-children
+    = render partial: "categories/header_grand-child", collection: category.children, as: "child"
