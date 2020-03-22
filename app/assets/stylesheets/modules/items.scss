@@ -1,3 +1,241 @@
 * {
   box-sizing: border-box;
+} 
+
+.h-header{
+  // background-color: black;
+  height: 100px;
+  width: 100%;
+  padding: 0, 60px;
+  &__extra{
+    height: 100%;
+    width: 100%;
+    // background-color: yellowgreen;
+    &__frame{
+      margin: 0, 20px;
+      padding-top: 15px;
+      // background-color: gray;
+      &__upper{
+        // background-color: magenta;
+        height: 50px;
+        width: 952px;
+        margin: 0 auto; 
+        display: flex;
+        &__logo{
+          height: 50px;
+          width: 140px;
+          margin-right: 30px;;
+          padding-bottom: 10px;
+          // background-color: pink;
+        }
+        &__search{
+          height: 36px;
+          width: 834px;
+          margin-bottom: 5px;
+          // background-color: yellow;
+          position: relative;
+          &__box{
+            height: 36px;
+            width: 745px;
+            padding-left: 5px;
+            border: 2px;
+            // background-color: darksalmon;
+            input{
+              height: 36px;
+              width: 100%;
+              font-size: 16px;
+            }
+          }
+          &__faicon{
+            height: 36px;
+            width: 36px;
+            padding-top: 2px;
+            background-color: #3ccace;
+            position: absolute;
+            top: 0;
+            right: 0;
+            a{
+              font-size: 20px;
+              // background-color: red;
+              line-height: 36px;
+              text-align: center;
+            } 
+          }
+        }
+      }
+      &__lower{
+        // background-color: springgreen;
+        height: 32px;
+        width: 952px;
+        font-size: 14px;
+        line-height: 32px;
+        margin: 0 auto;
+        display: flex;
+        text-decoration: none;
+          &__left{
+            width: 201px;
+            display: flex;
+            &__category{
+              width:100px;
+              // background-color: purple;
+              color: black
+            }
+            &__brand{
+              width: 102px;
+              padding-left: 15px;
+              // background-color: deeppink;
+              color:black
+            }
+          }
+          &__right{
+            width: 250px;
+            margin-left: 580px;
+            display: flex;
+            &__log{
+              width: 150px;
+              padding-left: 5px;
+              // background-color: blue;
+              color: black;
+            }
+            &__new{
+              width: 140px;
+              padding-left: 5px;
+              // background-color: red;
+              color: black;
+            }
+            &__myp{
+              width: 100px;
+              // background-color: red;
+              color: black;
+            }
+          }
+      }
+    }    
+  }
+}
+.h-header__extra__frame__lower__left__category:hover {
+  color: orange;
+}
+.h-header__extra__frame__lower__left__brand:hover {
+  color: orange;
+}
+
+
+.h-main{
+  &__frame{
+    background-color: goldenrod;
+    box-sizing: border-box;
+    padding: 46px 40px 0;
+    height: 800px;
+    overflow: scroll;
+    &__group{
+      &__name{
+        background-color: red;
+        height: 40px;
+      }
+      &__con{
+        background-color: khaki;
+        height: 260px;
+        &__piece{
+          background-color: blue;
+        }
+      }
+    }
+  }
+}
+
+.banner{
+  height: 160px;
+  width: 100%;
+  background-image: url(https://static.retrip.jp/spot/8e2906c4-5101-4cd4-8669-d752b51b0137/images/3f662386-49b6-48ef-9694-512e8a17f0a4_m.jpg);
+  background-size: contain;
+  padding: 100px 40px;
+  &__main{
+    height: 160px;
+    width: 992px;
+    color: white;
+    
+
+    &__top{
+      height: 33px;
+      width: 992px;    
+      font-size: 24px;
+      line-height: 33px;
+      text-align: center;
+      text-shadow:2px 2px 3px #f51818;
+    }
+    &__midd{   
+      height: 53px;
+      width: 992px; 
+      font-size: 35px;
+      line-height: 53px;
+      text-align: center;
+      text-shadow:2px 2px 3px #f51818;
+    }
+    &__bottom{
+      height: 53px;
+      width: 992px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      &__apple{
+        margin-right: 10px;
+      }
+      &__google{}
+    }
+  }
+}
+
+.h-footer{
+  height:235px;
+  width: 100%;
+  background-color: black;
+  padding: 60px 0;
+  color: white;
+  &__cont{
+    // background-color: gray;
+    &__text{
+      height:170px;
+      width: 840px;
+      margin:0 auto;
+      display: flex;
+      justify-content: space-around;
+      &__info{
+        height: 100%; 
+        width: 265px;
+        // background-color: sandybrown;
+        &__about{  
+          height: 30px;
+          text-align: center;
+          font-size: 16px;
+          font-weight: bold;
+          margin: 0 0 20px;
+        }
+        &__list{
+          color: white;
+          font-size: 12px;
+          line-height: 32px;
+          text-align: center;
+          text-decoration: none;
+        }
+      }
+    }
+    &__logo{
+      height: 45px;
+      width: 100%;
+      background-color: black;
+      margin: 0 auto;
+      line-height: 50px;
+      text-align: center;
+    }
+    &__license{
+      height: 16px;
+      width: 100%;
+      background-color: black;
+      line-height: 16px;
+      text-align: center;
+      font-size: 14px;
+      text-decoration: none;
+    }
+  }
 }

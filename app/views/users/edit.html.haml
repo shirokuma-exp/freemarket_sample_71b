@@ -1,0 +1,33 @@
+.wrapper
+  .h-header
+    .h-header__extra
+      .h-header__extra__frame
+        .h-header__extra__frame__upper
+          .h-header__extra__frame__upper__logo
+            =link_to image_tag('http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg', size: "140x40"), root_path
+          .h-header__extra__frame__upper__search
+            .h-header__extra__frame__upper__search__box
+              %input{:placeholder => "キーワードから探す", :type => 'text'}
+            .h-header__extra__frame__upper__search__faicon
+              =link_to image_tag('http://furima.tokyo/assets/icon-search-60a83ada85216fe00789cd16065281694d9a08948275fef83683fadcf131d84d.svg', size: "20x20"), '#'
+        .h-header__extra__frame__lower
+          .h-header__extra__frame__lower__right
+            .h-header__extra__frame__lower__right__new
+              -# トップ画面に遷移する
+              =link_to 'トップ画面', root_path , class:'h-header__extra__frame__lower__right__myp'
+            .h-header__extra__frame__lower__right__log
+              -# ログアウトボタンを表示させる
+              =link_to 'ログアウト', destroy_user_session_path , method: :delete, class:'h-header__extra__frame__lower__right__log'
+            .h-header__extra__frame__lower__right__new
+              -# カード登録をクリックするとカード登録画面に遷移する
+              =link_to 'カード登録','#', class:'h-header__extra__frame__lower__right__new'
+  .mypagecontent
+    .mypagecontent__all
+      .mypagecontent__all__picture
+        .mypagecontent__all__picture__userinfo
+          Username
+      .mypagecontent__all__profile
+        .mypagecontent__all__profile__evaluation
+      .mypagecontent__all__items
+        この出品者の商品
+  = render "items/footer"
