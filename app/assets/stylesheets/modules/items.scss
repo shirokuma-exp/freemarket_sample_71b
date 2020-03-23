@@ -49,7 +49,9 @@
           &__faicon{
             height: 36px;
             width: 36px;
-            padding-top: 2px;
+            padding: 2px 8px 8px;
+            // padding-top: 2px;
+            // padding-right: 8px;
             background-color: #3ccace;
             position: absolute;
             top: 0;
@@ -78,13 +80,15 @@
             &__category{
               width:100px;
               // background-color: purple;
-              color: black
+              color: black;
+              text-decoration: none;
             }
             &__brand{
               width: 102px;
               padding-left: 15px;
               // background-color: deeppink;
-              color:black
+              color:black;
+              text-decoration: none;
             }
           }
           &__right{
@@ -96,17 +100,20 @@
               padding-left: 5px;
               // background-color: blue;
               color: black;
+              text-decoration: none;
             }
             &__new{
               width: 140px;
               padding-left: 5px;
               // background-color: red;
               color: black;
+              text-decoration: none;
             }
             &__myp{
               width: 100px;
               // background-color: red;
               color: black;
+              text-decoration: none;
             }
           }
       }
@@ -120,32 +127,115 @@
   color: orange;
 }
 
-
 .h-main{
   &__frame{
-    background-color: goldenrod;
-    box-sizing: border-box;
-    padding: 46px 40px 0;
-    height: 800px;
-    overflow: scroll;
+    background-color: lightgrey;
+    width: 100%;
+    // padding-top: 45px;
+    // overflow: scroll;
     &__group{
-      &__name{
-        background-color: red;
-        height: 40px;
+      // background-color: green;
+      box-sizing: border-box;
+      width: 1040px;
+      height: 644px;
+      margin: 0 auto;
+      &__cate{
+        // background-color: aquamarine;
+        width: 1040px;
+        height: 80px;
+        margin-bottom: 16px;
+        padding-top: 45px;
+        display:flex;
+        justify-content: space-between;
+        &__catename{
+          // background-color: blanchedalmond;
+          width: 930px;
+          height: 34px;
+        }
+        &__catemotto{
+          // background-color: cornsilk;
+          width: 90px;
+          height: 19px;
+          padding-top: 10px;
+          display: flex;
+          justify-content: space-between;
+          &__text{
+            // background-color: darkgray;
+            width: 70px;
+            height: 16px;
+            color:navy;
+            font-size: 12px;
+          }
+          &__arrow{
+            // background-color: fuchsia;
+            width: 16px;
+            height: 16px;
+          }
+        }
       }
-      &__con{
-        background-color: khaki;
-        height: 260px;
-        &__piece{
-          background-color: blue;
+      &__cont{
+        // background-color: greenyellow;
+        width: 1040px;
+        height: 544px;
+        &__lists{
+          // background-color: #3CC;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          &__list{
+            // background-color: red;
+            width: 208px;
+            height: 272px;
+            padding: 10px;
+            &__leaf{
+              // background-color: yellowgreen;
+              width: 188px;
+              height: 252px;
+              &__pic{
+                background-color: sandybrown;
+                width: 188px;
+                height: 188px;
+                position: relative;
+                text-align: center;
+                a{
+                  width:auto;
+                  height:auto;
+                  max-width:100%;
+                  max-height:100%;
+                }
+                &__price{
+                  background-color: rgba(0,0,0,0.5);
+                  color:white;
+                  height: 28px;
+                  padding: 0 10px 0 0;
+                  position: absolute;
+                  bottom: 5px;
+                  border-radius: 0 12px 12px 0;
+                }
+              }
+              &__comment{
+                background-color: lightblue;
+                width: 188px;
+                height: 64px;
+                padding: 12px;
+                font-size: 14px;
+                
+              }
+            }
+          }
         }
       }
     }
   }
+  &__space{
+    background-color: white;
+    width: 100%;
+    height: 100px;
+  }
 }
 
 .banner{
-  height: 160px;
+  height: 360px;
   width: 100%;
   background-image: url(https://static.retrip.jp/spot/8e2906c4-5101-4cd4-8669-d752b51b0137/images/3f662386-49b6-48ef-9694-512e8a17f0a4_m.jpg);
   background-size: contain;
@@ -153,12 +243,11 @@
   &__main{
     height: 160px;
     width: 992px;
+    margin: 0 auto;
     color: white;
-    
-
     &__top{
       height: 33px;
-      width: 992px;    
+      width: 100%;    
       font-size: 24px;
       line-height: 33px;
       text-align: center;
@@ -166,7 +255,7 @@
     }
     &__midd{   
       height: 53px;
-      width: 992px; 
+      width: 100%; 
       font-size: 35px;
       line-height: 53px;
       text-align: center;
@@ -174,7 +263,7 @@
     }
     &__bottom{
       height: 53px;
-      width: 992px;
+      width: 100%;
       margin-top: 20px;
       display: flex;
       justify-content: center;
@@ -186,8 +275,17 @@
   }
 }
 
+.banner__main__bottom__apple:hover {
+  cursor: pointer;
+  opacity:0.5;
+}
+.banner__main__bottom__google:hover {
+  cursor: pointer;
+  opacity:0.5;
+}
+
 .h-footer{
-  height:235px;
+  height:355px;
   width: 100%;
   background-color: black;
   padding: 60px 0;
@@ -210,6 +308,15 @@
           font-size: 16px;
           font-weight: bold;
           margin: 0 0 20px;
+        }
+        &__lists{
+          a{
+            color: white;
+            font-size: 12px;
+            line-height: 32px;
+            text-align: center;
+            text-decoration: none; 
+          }
         }
         &__list{
           color: white;
@@ -238,4 +345,39 @@
       text-decoration: none;
     }
   }
+}
+
+.purchase-btn{
+  height: 116px;
+  width:120px;
+  background-color: #3CCACE;
+  border-radius: 5px;
+  padding :15px;
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+
+  &__text{
+    height: 27px;
+    width: 97px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    color: white;
+    // background-color: seagreen;
+  }
+  &__box{
+    // background-color: red;
+    padding-left: 17px;
+  }
+}
+
+.h-footer__cont__text__info__list:hover{
+  text-decoration: underline;
+}
+
+.purchase-btn:hover {
+  cursor: pointer;
+  opacity:0.9;
 }
