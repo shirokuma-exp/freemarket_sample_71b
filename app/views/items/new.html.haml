@@ -1,0 +1,98 @@
+= form_for '#' do |f|
+  .main
+    .infoForm
+      .logo
+        =link_to '#' do
+          =image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
+
+      .exhibitionBox
+        .exhibitionImage
+          出品画像 
+          %span
+            必須
+          .exhibitionImageForm
+            最大３枚までアップロードできます
+            = f.file_field :image, placeholder: "クリックしてファイルをアップロード"
+            %label.label
+            = fa_icon 'camera'
+
+
+        .itemStatus
+          .name
+            商品名  
+            %span
+              必須
+            = f.text_field :name, placeholder: "〜文字まで"
+          .description
+            商品説明
+            %span
+              必須
+            = f.text_area :description, autofocus: true, placeholder: "商品の説明"
+          
+        .detail
+          商品の詳細
+          .category
+            カテゴリー
+            %span
+              必須
+            = f.select :delivery_charge, [["", ""], ["", ""]], include_blank: '選択して下さい' 
+
+          .brand
+            ブランド
+            %span
+              任意
+            = f.text_field :name, placeholder: "例）ベルサーチ"
+          .condition
+            商品の状態
+            %span
+              必須
+            = f.collection_select :condition_id, Condition.all, :id, :name, prompt: "選択してください", class: 'input'
+
+        .delivery
+          配送について
+          .deliveryCharge
+            配送料の負担
+            %span
+              必須
+            = f.collection_select :delivery_charge_id, Delivery_charge.all, :id, :name, prompt: "選択してください", class: 'input'
+          .deliveryWay
+            配送方法
+            %span
+              必須
+            = f.collection_select :delivery_way_id, Delivery_way.all, :id, :name, prompt: "選択してください", class: 'input'
+
+          .destination
+            発送元の地域
+            %span
+              必須
+            = f.collection_select :region_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
+          .shippingPreiod
+            発送までの日数
+            %span
+              必須
+            = f.collection_select :shipping_period_id, Shipping_period.all, :id, :name, prompt: "選択してください", class: 'input'
+
+        .price
+          価格（300〜）
+          %span
+            必須
+          .itemPrice
+            .sellingPrice
+              販売価格
+            .sellingPriceForm
+              ¥
+              = f.number_field :content, placeholder: "半角数字"
+              
+          -# .commision
+          -#   販売手数料(10%)
+          -# .profit
+          -#   販売利益
+
+          -#   つけてもつけなくても
+
+        .btns
+          .sendBtn
+            = f.submit "出品する", class: "send-btn"
+          .returnBtn
+            = link_to '#' do
+              戻る
