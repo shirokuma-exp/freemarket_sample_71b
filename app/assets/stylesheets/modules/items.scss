@@ -234,11 +234,15 @@
   }
 }
 
+.h-main__frame__group__cate__catemotto__text:hover{
+  @include hoverline;
+}
+
 .banner{
   height: 360px;
   width: 100%;
-  background-image: url(https://static.retrip.jp/spot/8e2906c4-5101-4cd4-8669-d752b51b0137/images/3f662386-49b6-48ef-9694-512e8a17f0a4_m.jpg);
-  background-size: contain;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRkpPQbwB2-EwY508Uf__DIg1sPGHIKgBJ1ff8kqGmyaXGAfSSO);
+  background-size: cover;
   padding: 100px 40px;
   &__main{
     height: 160px;
@@ -374,7 +378,7 @@
 }
 
 .h-footer__cont__text__info__list:hover{
-  text-decoration: underline;
+  @include hoverline;
 }
 
 .purchase-btn:hover {
