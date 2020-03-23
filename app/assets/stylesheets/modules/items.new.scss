@@ -1,0 +1,216 @@
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  width: 100%;
+  height: 2500px;
+  padding-top: 40px;
+  background-color: #eee;
+
+  .infoForm {
+    width: 700px;
+    height: 100px;
+    margin: 0 auto;
+
+    .logo {
+      text-align: center;
+      padding-bottom: 40px;
+    }
+
+    .exhibitionBox {
+      padding: 20px 40px;
+      font-size: 15px;
+      background-color: #ffffff;
+      span {
+        background-color: red;
+        color: white;
+        border: 1px solid red;
+        border-radius: 6px;
+      }
+
+      .exhibitionImage {
+        padding: 20px 0;
+
+        input {
+          height: 200px;
+          width: 100%;
+          border: 1px dashed rgb(204, 204, 204);
+          background-color: rgb(245, 245, 245);
+        }
+        ::placeholder {
+          text-align: center;
+        }
+        .exhibitionImageForm {
+          input {
+            // display: none;
+          }
+        }
+      }
+
+      .itemStatus {
+        .name {
+          padding: 20px 0;
+          input {
+            width: 100%;
+            padding: 10px;
+
+          }
+        }
+        .description {
+          padding: 20px 0;
+          textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+          }
+        }
+      }
+
+      .detail {
+        padding: 40px 0;
+
+        .category {
+          padding: 20px 0;
+          select {
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+          }
+
+        }
+
+        .brand {
+          padding: 20px 0;
+          span {
+            background-color: grey;
+            color: white;
+            border: 1px solid grey;
+            border-radius: 6px;
+          }
+          
+          input {
+            width: 100%;
+            padding: 10px;
+            
+          }
+        }
+
+        .condition {
+          padding: 20px 0;
+          select {
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+          }
+
+
+        }
+  
+      }
+
+      .delivery {
+        .deliveryCharge {
+          padding: 20px 0;
+          select {
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+          }
+
+
+        }
+        .deliveryWay {
+          padding: 20px 0;
+          select {
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+          }
+
+        }
+        .destination {
+          padding: 20px 0;
+          select {
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+          }
+
+
+        }
+        .shippingPreiod {
+          padding: 20px 0;
+          select {
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+          }
+
+        }
+      }
+
+      .price {
+        padding: 40px 0;
+
+        .itemPrice {
+          display: flex;
+          justify-content: space-between;
+          padding: 20px 0;
+
+
+          .sellingPrice {
+            padding: 20px 0;
+
+          }
+          .sellingPriceForm {
+            padding: 20px 0;
+            input {
+            width: 250px;
+            height: 50px;
+            padding: 10px;
+            }
+
+
+          }
+        }
+        .connision {
+          padding: 20px 0;
+
+        }
+        .profit {
+          padding: 20px 0;
+
+        }
+      }
+
+      .btns {
+        text-align: center;
+        .sendBtn {
+          padding: 40px 0;
+
+          input {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: red;
+            width: 300px;
+            height: 50px;
+            border-radius: 10px;
+          }
+        }
+        .returnBtn {
+          padding: 20px 0;
+
+          a {
+            color: #3CAACE;
+            text-decoration: none;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+ 
