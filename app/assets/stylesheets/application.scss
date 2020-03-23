@@ -1,5 +1,6 @@
 @import "reset";
+@import "mixins/vendor_prefix";
 @import "modules/items";
 @import "font-awesome";
 @import "modules/users";
-@import "modules/login_users"
+@import "modules/login_users";
