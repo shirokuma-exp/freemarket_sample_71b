@@ -1,10 +1,7 @@
 .credit-wrapper
   = render 'items/headder'
-  .l-container.clearfix
-    -# = render 'users/side'
     .credit-section
       .credit-content
-        -# = render "mypages/my-side"
         .credit-content__main
           .credit-content__head
             支払い方法
@@ -14,7 +11,6 @@
                 .add-credit
                   .add-credit-logo
                     カード名
-                    -# = image_tag @card_name[:brand]
                   .add-credit-number
                     = "**** **** **** " + @default_card_information.last4
                   .add-credit-dead
@@ -28,13 +24,3 @@
                 支払い方法について＞
 
 = render "items/footer"
--# .footer
--#   .title
--#     .title__a
--#       プライバシーポリシー
--#     .title__b
--#       FURIMA利用規約
--#     .title__c
--#       特定商取引に関する表記
--#   .logo
--#     © FURIMA, Inc.

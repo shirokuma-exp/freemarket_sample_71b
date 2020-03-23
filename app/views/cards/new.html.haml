@@ -1,12 +1,9 @@
 .credit-wrapper
   = render 'items/headder'
-  .l-container.clearfix
-    -# = render 'users/side'
     .credit-section
       %section.credit-content
         %h2.credit-content__head クレジットカード情報入力
         .credit-content__main
-          -# pay_user_credit_card_index_path?
           = form_tag(pay_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
             .credit-content__field
               .credit-content__main__form-group
