@@ -1,0 +1,37 @@
+.h-header
+  .h-header__extra
+    .h-header__extra__frame
+      .h-header__extra__frame__upper
+        .h-header__extra__frame__upper__logo
+          =link_to image_tag('http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg', size: "140x40"), root_path
+        .h-header__extra__frame__upper__search
+          .h-header__extra__frame__upper__search__box
+            %input{:placeholder => "キーワードから探す", :type => 'text'}
+          .h-header__extra__frame__upper__search__faicon
+            =link_to image_tag('http://furima.tokyo/assets/icon-search-60a83ada85216fe00789cd16065281694d9a08948275fef83683fadcf131d84d.svg', size: "20x20"), '#'
+      .h-header__extra__frame__lower
+        .h-header__extra__frame__lower__left
+          .h-header__extra__frame__lower__left__category
+            -# カテゴリーにカーソルをかぶせるとプルダウン式に項目が出てくる
+            =link_to 'カテゴリー', '#', class:'h-header__extra__frame__lower__left__category'
+          .h-header__extra__frame__lower__left__brand
+            -# ブランドにカーソルをかぶせるとプルダウン式に項目が出てくる
+            =link_to 'ブランド','#', class:'h-header__extra__frame__lower__left__brand'
+        .h-header__extra__frame__lower__right
+          - if user_signed_in?
+            .h-header__extra__frame__lower__right__log
+              -# ログインした状態ではログアウトボタンを表示させる
+              =link_to 'ログアウト', destroy_user_session_path , method: :delete, class:'h-header__extra__frame__lower__right__log'
+            .h-header__extra__frame__lower__right__new
+              -# 住所登録をクリックすると住所登録画面に遷移する
+              =link_to '住所登録','#', class:'h-header__extra__frame__lower__right__new'
+            .h-header__extra__frame__lower__right__new
+              -# マイページをクリックするとマイページ画面に遷移する
+              =link_to 'マイページ', edit_user_path(current_user) , class:'h-header__extra__frame__lower__right__myp'
+          - else
+            .h-header__extra__frame__lower__right__log
+              -# ログインをクリックするとログイン画面に遷移する
+              =link_to 'ログイン', new_user_session_path, class:'h-header__extra__frame__lower__right__log'
+            .h-header__extra__frame__lower__right__new
+              -# 新規会員登録をクリックするとサインアップ画面に遷移する
+              =link_to '新規会員登録', new_user_registration_path , class:'h-header__extra__frame__lower__right__new'
