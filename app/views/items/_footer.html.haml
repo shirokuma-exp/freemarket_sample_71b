@@ -16,31 +16,42 @@
       .h-footer__cont__text__info
         .h-footer__cont__text__info__about
           FURIMAについて
-        .h-footer__cont__text__info__list
-          =link_to '会社概要','#', class:"h-footer__cont__text__info__list"
-          %br
-          =link_to 'プライバシーポリシー','#', class:"h-footer__cont__text__info__list"
-          %br
-          =link_to 'FURIMA利用規約','#', class:"h-footer__cont__text__info__list"
-          %br
-          =link_to 'ポイントに対する特約','#', class:"h-footer__cont__text__info__list"
+        %ul.h-footer__cont__text__info__lists
+          %li.h-footer__cont__text__info__list
+            %a{:href => '#'} 会社概要
+          %li.h-footer__cont__text__info__list
+            %a{:href => '#'} プライバシーポリシー
+          %li.h-footer__cont__text__info__list
+            %a{:href => '#'} FURIMA利用規約
+          %li.h-footer__cont__text__info__list
+            %a{:href => '#'} ポイントに対する特約
       .h-footer__cont__text__info
         .h-footer__cont__text__info__about
           FURIMAを見る
-        .h-footer__cont__text__info__list
-          =link_to 'カテゴリー一覧','#', class:"h-footer__cont__text__info__list"
-          %br
-          =link_to 'ブランド一覧','#', class:"h-footer__cont__text__info__list"
+        %ul.h-footer__cont__text__info__lists
+          %li.h-footer__cont__text__info__list
+            %a{:href => '#'} カテゴリー一覧
+          %li.h-footer__cont__text__info__list
+            %a{:href => '#'} ブランド一覧
       .h-footer__cont__text__info
         .h-footer__cont__text__info__about
           ヘルプ＆ガイド
-        .h-footer__cont__text__info__list
-          =link_to 'FURIMAガイド','#', class:"h-footer__cont__text__info__list"
-          %br
-          =link_to 'FURIMAロゴ利用ガイドライン','#', class:"h-footer__cont__text__info__list"
-          %br
-          =link_to 'お知らせ','#', class:"h-footer__cont__text__info__list"
+        %ul.h-footer__cont__text__info__lists
+          %li.h-footer__cont__text__info__list
+            %a{:href => '#'} FURIMAガイド
+          %li.h-footer__cont__text__info__list
+            %a{:href => '#'} FURIMAロゴ利用ガイドライン
+          %li.h-footer__cont__text__info__list
+            %a{:href => '#'} お知らせ
     .h-footer__cont__logo
       =link_to image_tag('https://lh3.googleusercontent.com/tvfmTvZB8F_8B4bcMWRFdYELX7miM69kjqJ5FNowDIdUOpA54I2Wxmloh6DYmArtRPlRAg=s170', size: "165x45"), root_path
     .h-footer__cont__license
       ©︎FURIMA
+    
+  -# クリックすると購入画面に遷移する
+  %a{:href => "#"}
+    .purchase-btn
+      .purchase-btn__text
+        出品する
+      .purchase-btn__box
+        =image_tag('http://furima.tokyo/assets/icon_camera-968c5ebaa05319bf1e2ad7508f852dd712504a4d26a1930d8bd87ec03ebcc37a.svg', size: "54x54")
