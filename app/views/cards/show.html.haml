@@ -1,89 +1,39 @@
-.user-register
-  .header
-    .header__logo
-      = image_tag asset_path("logo.png"), size: "200x50", alt: "test"
-  .buydetails-mein.clearfix
-    = form_with model:@item, url:purchase_item_path, local:true do |f|
-      %section.buydetails-content
-        %h2.buydetails-content__head 購入内容の確認
-        .buy-content__inner
-          .buy-item__box
-            %h3.buy-item__box__main__image
-            -#   =image_tag @item.images[0].item_image.url,class:"buy-image"
-            -# - if @image[3].present?
-            -#   .buy-item__box__main__sub
-            -#     .buy-item__box__main__sub__test1
-            -#       = image_tag @image[1].image.url
-            -#     .buy-item__box__main__sub__test2
-            -#       = image_tag @image[2].image.url
-            -#     .buy-item__box__main__sub__test3
-            -#       = image_tag @image[3].image.url
-            -# - elsif @image[2].present?
-            -#   .buy-item__box__main__sub
-            -#     .buy-item__box__main__sub__test1
-            -#       = image_tag @image[1].image.url
-            -#     .buy-item__box__main__sub__test2
-            -#       = image_tag @image[2].image.url
-            -# - elsif @image[1].present?
-            -#   .buy-item__box__main__sub
-            -#     .buy-item__box__main__sub__test1
-            -#       = image_tag @image[1].image.url
-            -# - else 
-            -#   .buy-item__box__main__sub
-            -#     .buy-item__box__main__sub__test3
-            .buy-item__detail
-              %p.buy-item__name
-                -# =@item.name
-              %p.buy-item__price 
-                %span ¥10,000（税込）
-                %span.buy-item__send 送料込み
-        %section.buy-content-item
-          .buy-content__inner
-            .buy-form
-              %ul.buy-price__table
-                %li.buy-price
-                  .buy-price__label 支払い金額
-                  .buy-price__label__sell
-                    %span.deta-by-pay ¥10,000
-        %section.buydetails-content__info{ id: 'buydetails-bottom' }
-          .buydetails-content__inner
-            %h3 支払方法 (登録クレジットカード情報)
-            %h3.signup-main__chapter-sub-head
-              %br
-              カード番号 :  
-              = "**** **** **** " + @default_card_information.last4
-              %br
-              %br
-              有効期限 :  
-              - exp_month = @default_card_information.exp_month.to_s
-              - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-              = exp_month + " / " + exp_year
-        %section.buydetails-content__info
-          .buydetails-content__inner
-            %h3 配送先
-            %destination.buy-user-info-text
-              =@destination.post_code
-              %br
-              =@destination.prefecture_code
-              %br
-              =@destination.city
-              =@destination.building
-              =@destination.house_number
-              %br
-              =@user.family_name
-              =@user.first_name
-          .buydetails-content__text
-            %button.buydetails-content__btn
-            = f.submit("購入する", class:"purchase")
-    .footer
-      .title
-        .title__a
-          プライバシーポリシー
-        .title__b
-          メルカリ利用規約
-        .title__c
-          特定商取引に関する表記
-      .item
-        = image_tag asset_path("logo-white.png"), size: "200x60", alt: "test"
-      .logo
-        © FURIMA, Inc.
+.credit-wrapper
+  = render 'items/headder'
+  .l-container.clearfix
+    -# = render 'users/side'
+    .my-all
+      .my-contents
+        -# = render "mypages/my-side"
+        .add-card
+          .add-card__head
+            支払い方法
+          .add-card__contents
+            .add-card__contents__form
+              .add-card-form
+                .card-inform
+                  .card-logo
+                    -# = image_tag @card_name[:brand]
+                  .card-number
+                    = "**** **** **** " + @default_card_information.last4
+                  .card-dead
+                    - exp_month = @default_card_information.exp_month.to_s
+                    - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                    = exp_month + " / " + exp_year
+                  = link_to new_card_path, method: :delete, class: "delete-btn", id:"delete" do
+                    削除する
+            .add-card__contents__way
+              = link_to "#", class: "pay-way" do
+                支払い方法について＞
+.footer
+  .title
+    .title__a
+      プライバシーポリシー
+    .title__b
+      FURIMA利用規約
+    .title__c
+      特定商取引に関する表記
+  .item
+    -# = image_tag asset_path("logo-white.png"), size: "200x60", alt: "test"
+  .logo
+    © FURIMA, Inc.
