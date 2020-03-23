@@ -2,38 +2,39 @@
   = render 'items/headder'
   .l-container.clearfix
     -# = render 'users/side'
-    .my-all
-      .my-contents
+    .credit-section
+      .credit-content
         -# = render "mypages/my-side"
-        .add-card
-          .add-card__head
+        .credit-content__main
+          .credit-content__head
             支払い方法
-          .add-card__contents
-            .add-card__contents__form
-              .add-card-form
-                .card-inform
-                  .card-logo
+          .credit-content__section
+            .credit-content__section__form
+              .add-credit-form
+                .add-credit
+                  .add-credit-logo
+                    カード名
                     -# = image_tag @card_name[:brand]
-                  .card-number
+                  .add-credit-number
                     = "**** **** **** " + @default_card_information.last4
-                  .card-dead
+                  .add-credit-dead
                     - exp_month = @default_card_information.exp_month.to_s
                     - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
                     = exp_month + " / " + exp_year
-                  = link_to new_card_path, method: :delete, class: "delete-btn", id:"delete" do
+                  = link_to new_card_path, method: :delete, class: "credit-delete-btn", id:"delete" do
                     削除する
-            .add-card__contents__way
-              = link_to "#", class: "pay-way" do
+            .credit-content__section__way
+              = link_to "#", class: "credit-pay-way" do
                 支払い方法について＞
-.footer
-  .title
-    .title__a
-      プライバシーポリシー
-    .title__b
-      FURIMA利用規約
-    .title__c
-      特定商取引に関する表記
-  .item
-    -# = image_tag asset_path("logo-white.png"), size: "200x60", alt: "test"
-  .logo
-    © FURIMA, Inc.
+
+= render "items/footer"
+-# .footer
+-#   .title
+-#     .title__a
+-#       プライバシーポリシー
+-#     .title__b
+-#       FURIMA利用規約
+-#     .title__c
+-#       特定商取引に関する表記
+-#   .logo
+-#     © FURIMA, Inc.

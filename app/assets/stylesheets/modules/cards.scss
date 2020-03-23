@@ -24,6 +24,9 @@
     border-bottom: 1px solid #f5f5f5;
     text-align: center;
   }
+  &__main{
+    padding-top: 20px;
+  }
   &__field-label{
     margin: 8px 0 0;
     padding-left:5px;
@@ -36,8 +39,7 @@
 
 .credit-content__main{
   margin: 0 auto;
-  width: 50vw;
-  padding-left: 130px;
+  width: 80%;
   &__field-input{
     padding-top: 5px;
     padding-bottom: 5px;
@@ -75,6 +77,26 @@
     height: 50px;
   }
   &__form-question{
+    color: #ffb340;
+    padding-top: 5px;
+    padding-bottom: 15px;
+  }
+}
+
+.credit-content__section{
+  &__form{
+    border-bottom: 1px solid #f5f5f5;
+    .add-credit-form{
+      padding-bottom: 10px;
+      font-weight: bold;
+    }
+  }
+  .credit-delete-btn{
+    color: #ffb340;
+    padding-top: 5px;
+    padding-bottom: 15px;
+  }
+  .credit-pay-way{
     color: #ffb340;
     padding-top: 5px;
     padding-bottom: 15px;
