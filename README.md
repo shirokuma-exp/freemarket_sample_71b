@@ -35,14 +35,14 @@
 |------|----|-------|
 |name|string|null: false|
 |description|text|null: false|
-|condition|string|null: false|
+|condition_id|integer(ah)|null: false|
 |size|string|null: false|
-|delivery_charge|string|null: false|
-|delivery_way|string|null: false|
-|shipping_period|string|null: false|
+|delivery_charge_id|integer(ah)|null: false|
+|delivery_way_id|integer(ah)|null: false|
+|shipping_period_id|integer(ah)|null: false|
 |price|integer|null: false|
 |like|integer||
-|region|string|null: false|
+|region_id|integer(ah)|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
