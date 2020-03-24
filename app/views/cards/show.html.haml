@@ -1,26 +1,26 @@
 .credit-wrapper
   = render 'items/headder'
-    .credit-section
-      .credit-content
-        .credit-content__main
-          .credit-content__head
-            支払い方法
-          .credit-content__section
-            .credit-content__section__form
-              .add-credit-form
-                .add-credit
-                  .add-credit-logo
-                    カード名
-                  .add-credit-number
-                    = "**** **** **** " + @default_card_information.last4
-                  .add-credit-dead
-                    - exp_month = @default_card_information.exp_month.to_s
-                    - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-                    = exp_month + " / " + exp_year
-                  = link_to new_card_path, method: :delete, class: "credit-delete-btn", id:"delete" do
-                    削除する
-            .credit-content__section__way
-              = link_to "#", class: "credit-pay-way" do
-                支払い方法について＞
+  .credit-section
+    .credit-content
+      .credit-content__main
+        .credit-content__head
+          支払い方法
+        .credit-content__section
+          .credit-content__section__form
+            .add-credit-form
+              .add-credit
+                .add-credit-logo
+                  カード名
+                .add-credit-number
+                  = "**** **** **** " + @default_card_information.last4
+                .add-credit-dead
+                  - exp_month = @default_card_information.exp_month.to_s
+                  - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                  = exp_month + " / " + exp_year
+                = link_to new_card_path, method: :delete, class: "credit-delete-btn", id:"delete" do
+                  削除する
+          .credit-content__section__way
+            = link_to "#", class: "credit-pay-way" do
+              支払い方法について＞
 
 = render 'items/footer'
