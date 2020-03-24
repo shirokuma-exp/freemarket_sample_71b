@@ -1,0 +1,42 @@
+.h-header__extra__pannkuzu {
+  position: relative;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  background: #fff;
+  z-index: 1;
+  .h-header__extra__pannkuzu__2 {
+    padding-top: 16px;
+    padding-right: 0px;
+    padding-bottom: 16px;
+    padding-left: 0px;
+    margin: 0 auto
+  }
+}
+
+.h-header__extra__box {
+  margin: 40px auto 0;
+  width: 1020px;
+  .h-header__extra__box__2 {
+    float: right;
+    .h-header__extra__box__2__3 {
+      margin: 0;
+      .h-header__extra__box__2__3__head {
+        font-size: 24px;
+        padding: 8px 24px;
+      }
+      .h-header__extra__box__2__3__inner {
+        padding: 40px 40px 64px;
+        .new_address {
+          max-width: 343px;
+          .field1 {
+            margin: 0;
+            .login-input-text {
+              width: 100%;
+              margin: 8px 0 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

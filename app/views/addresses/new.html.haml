@@ -1,0 +1,90 @@
+.h-header
+  .h-header__extra
+    .h-header__extra__frame
+      .h-header__extra__frame__upper
+        .h-header__extra__frame__upper__logo
+          =link_to image_tag('http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg', size: "140x40"), root_path
+        .h-header__extra__frame__upper__search
+          .h-header__extra__frame__upper__search__box
+            %input{:placeholder => "キーワードから探す", :type => 'text'}
+          .h-header__extra__frame__upper__search__faicon
+            =link_to image_tag('http://furima.tokyo/assets/icon-search-60a83ada85216fe00789cd16065281694d9a08948275fef83683fadcf131d84d.svg', size: "20x20"), '#'
+      .h-header__extra__frame__lower
+        .h-header__extra__frame__lower__left
+          .h-header__extra__frame__lower__left__category
+            -# カテゴリーにカーソルをかぶせるとプルダウン式に項目が出てくる
+            =link_to 'カテゴリー', '#', class:'h-header__extra__frame__lower__left__category'
+          .h-header__extra__frame__lower__left__brand
+            -# ブランドにカーソルをかぶせるとプルダウン式に項目が出てくる
+            =link_to 'ブランド','#', class:'h-header__extra__frame__lower__left__brand'
+      -# 以下豊田編集
+    .h-header__extra__pannkuzu
+      カテゴリーから探す（パンくずのgemにて後日編集）
+      .h-header__extra__pannkuzu__2
+    .h-header__extra__box 
+      .h-header__extra__box__2
+        .h-header__extra__box__2__3
+          .h-header__extra__box__2__3__head
+            発送元お届け先住所
+          .h-header__extra__box__2__3__inner
+            =form_for [@user, @address] do |f|
+              .field1
+                %label お名前
+                = f.label :destination
+                %span 必須
+                %br/
+                = f.text_field :destination, autofocus: true, placeholder: "例）中森の直也", class: 'login-input-text'
+              .field2
+                %label お名前かな
+                = f.label :destination_kana
+                %span 必須
+                %br/
+                = f.text_field :destination_kana, autofocus: true, placeholder: "例）なかもりのなおや", class: 'login-input-text'
+              %script
+              .field3
+                %label 郵便番号
+                = f.label :postcode
+                %span 必須
+                %br/
+                = f.text_field :postcode, autofocus: true, placeholder: "例）123−4567", class: 'login-input-text'
+              .field4
+                %span.field4__level 都道府県
+                %span.field4__arbitrary 必須
+                .field4__icon
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: 'input'
+                  -# = fa_icon "chevron-down", class: "identification__form-icon"
+                -# %label 都道府県
+                -# = f.label :prefecture
+                -# %span 必須
+                -# %br/
+                -# = f.select :destination, autofocus: true, placeholder: "", class: 'login-input-text'
+                -# = f.label :都道府県, { class: 'new-registration-label' }
+                -# = f.label :必須, { class: 'form-require' }
+                -# .prefecture-select-wrap
+                -#   = f.collection_select :prefecture, Prefecture.all, :id, :name
+              .field5
+                %label 本市区町村
+                = f.label :city
+                %span 必須
+                %br/
+                = f.text_field :city, autofocus: true, placeholder: "", class: 'login-input-text'
+              .field6
+                %label 番地
+                = f.label :street
+                %span 必須
+                %br/
+                = f.text_field :street, autofocus: true, placeholder: "", class: 'login-input-text'
+              .field7
+                %label 建物名
+                = f.label :building
+                %span 任意
+                %br/
+                = f.text_field :building, autofocus: true, placeholder: "", class: 'login-input-text'
+              -# .field8
+              -#   %label 電話番号
+              -#   = f.label :phone_number
+              -#   %span 任意
+              -#   %br/
+              -#   = f.text_field :destination, autofocus: true, placeholder: "090−1234−5678", class: 'login-input-text'
+              .actions
+                = f.submit "住所登録する", class: 'submit'
