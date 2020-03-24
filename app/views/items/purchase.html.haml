@@ -1,0 +1,40 @@
+= render "headder"
+.purchased-wrapper
+  .purchased-main
+    .purchased-content
+      .purchased-content__head
+        購入内容の確認
+      .purchased-content__item-box
+        .purchased-content__item-box__item
+          .purchased-content__item-box__item__image
+            -# = image_tag @item.item_images.first.image_url.to_s
+            画像
+          .purchased-content__item-box__item__detail
+            .purchased-content__item-box__item__detail__name
+              -# = @item.name
+              商品名
+            .purchased-content__item-box__item__detail__price
+              -# %p ¥#{@item.price} （税込）送料込み
+              ¥ 1000（税込）送料込み
+      .purchased-content__price-box
+        .purchased-content__price-box__price
+          .purchased-content__price-box__price__top
+            .purchased-content__price-box__price__top__left
+              支払い金額
+            .purchased-content__price-box__price__top__right
+              -# ¥ #{@item.price}
+              ¥ 1000
+        .purchased-content__price-box__way
+          .purchased-content__price-box__way__top
+            %h1.purchased-content__title 支払い方法
+            .purchased-content__card
+              .purchased-content__card--num
+                = "**** **** **** " + @default_card_information.last4
+              .purchased-content__card--expire
+                - exp_month = @default_card_information.exp_month.to_s
+                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
+        = form_tag(action: :pay, method: :post) do
+          %button.purchased-content__price-box__btn 購入する
+
+= render "footer"
