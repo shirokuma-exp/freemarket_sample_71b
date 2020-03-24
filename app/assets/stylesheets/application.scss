@@ -1,7 +1,12 @@
 @import "reset";
+@import "mixins/vendor_prefix";
 @import "modules/items";
+@import "modules/itemsNew";
+@import "modules/itemsShow";
 @import "font-awesome";
 @import "modules/users";
 @import "modules/login_users";
 @import "modules/addresess_new";
-@import "modules/flash"
+@import "modules/flash";
+@import "modules/cards";
+@import "modules/purchased"

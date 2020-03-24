@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 2020_03_23_070352) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "ancestry", null: false
@@ -36,14 +44,14 @@ ActiveRecord::Schema.define(version: 2020_03_23_070352) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.string "condition", null: false
+    t.integer "condition_id", null: false
     t.string "size", null: false
-    t.string "delivery_charge", null: false
-    t.string "delivery_way", null: false
-    t.string "shipping_period", null: false
+    t.integer "delivery_charge_id", null: false
+    t.integer "delivery_way_id", null: false
+    t.integer "shipping_period_id", null: false
+    t.integer "region_id", null: false
     t.integer "price", null: false
-    t.integer "like", null: false
-    t.string "region", null: false
+    t.integer "like"
     t.bigint "user_id"
     t.integer "category_id"
     t.integer "brand_id"

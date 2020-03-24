@@ -1,0 +1,6 @@
+$prefixes: -webkit-, -moz-, -ms-, -o-, '';
+
+@mixin hoverline {
+    cursor: pointer;
+    text-decoration: underline;
+}

@@ -230,3 +230,53 @@ h2 {
     text-align: center;
   }
 }
+
+// ユーザーマイページ用 手嶋作成
+
+.mypageheader{
+  width: 100%;
+  height: 100px;
+  background-color: lightgoldenrodyellow;
+}
+
+.mypagecontent{
+  height: 1500px;
+  width: 100%;
+  background-color: lightgrey;
+  padding: 50px 300px;
+  &__all{
+    height: 100%;
+    width: 100%;
+    background-color: lightyellow;
+    &__picture{
+      position: relative;
+      width: 100%;
+      height: 350px;
+      // background-color: lightgreen;
+      background: linear-gradient(to top, rgba(217, 175, 217, 0.7) 0%, rgba(151, 217, 225, 0.7) 100%),url(mizutama.jpg);  /* 背景画像指定 */
+      &__userinfo{
+        width: 100%;
+        height: 100px;
+        // background-color:yellow;
+        position: absolute;
+        top: 250px;
+        text-align: center;
+      }
+    }
+    &__profile{
+      width: 100%;
+      height: 350px;
+      background-color: white;
+      &__evaluation{
+        width: 100%;
+        height: 50px;
+        border-bottom: solid gray 1px;
+      }
+    }
+  }
+}
+
+.mypagefooter{
+  height: 355px;
+  background-color: white;
+}
