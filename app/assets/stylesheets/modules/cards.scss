@@ -1,0 +1,104 @@
+*{
+  box-sizing: border-box;
+}
+
+.credit-wrapper {
+  width: 100vw;
+  height: calc(100vh + 100px);
+  padding-top: 40px;
+  background-color: #eee;
+}
+
+.credit-section {
+  width: 700px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.credit-content{
+  background-color: #ffffff;
+  margin: 0 auto;
+  &__head{
+    font-size: 24px;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+  }
+  &__main{
+    padding-top: 20px;
+  }
+  &__field-label{
+    margin: 8px 0 0;
+    padding-left:5px;
+    padding-bottom: 5px;
+  }
+  &__field{
+    padding-top: 15px;
+  }
+}
+
+.credit-content__main{
+  margin: 0 auto;
+  width: 80%;
+  &__field-input{
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  &__card-list{
+    padding-top: 5px;
+  }
+  &__btn-default{
+    background: #3CCACE;
+    color: #ffffff;
+    border-radius: 2px;
+    border-style: none;
+    padding: 5px;
+    width: 30vw;
+    height: 50px;
+    margin-bottom: 50px;
+  }
+  &__form-require{
+    background: #3CCACE;
+    color: #fff;
+    padding:2px;
+    text-align: center;
+    border-radius: 2px;
+    font-size: 0.9em;
+  } 
+  &__card-list{
+    display: flex;
+    justify-content: flex-start;
+    li{
+      padding-left: 5px;
+    }
+  }
+  &__input-default{
+    width: 30vw;
+    height: 50px;
+  }
+  &__form-question{
+    color: #ffb340;
+    padding-top: 5px;
+    padding-bottom: 15px;
+  }
+}
+
+.credit-content__section{
+  &__form{
+    border-bottom: 1px solid #f5f5f5;
+    .add-credit-form{
+      padding-bottom: 10px;
+      font-weight: bold;
+    }
+  }
+  .credit-delete-btn{
+    color: #ffb340;
+    padding-top: 5px;
+    padding-bottom: 15px;
+  }
+  .credit-pay-way{
+    color: #ffb340;
+    padding-top: 5px;
+    padding-bottom: 15px;
+  }
+}
