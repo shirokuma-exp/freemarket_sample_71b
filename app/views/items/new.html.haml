@@ -54,12 +54,12 @@
             配送料の負担
             %span
               必須
-            = f.collection_select :delivery_charge_id, Delivery_charge.all, :id, :name, prompt: "選択してください", class: 'input'
+            = f.collection_select :delivery_charge_id, DeliveryCharge.all, :id, :name, prompt: "選択してください", class: 'input'
           .deliveryWay
             配送方法
             %span
               必須
-            = f.collection_select :delivery_way_id, Delivery_way.all, :id, :name, prompt: "選択してください", class: 'input'
+            = f.collection_select :delivery_way_id, DeliveryWay.all, :id, :name, prompt: "選択してください", class: 'input'
 
           .destination
             発送元の地域
@@ -70,7 +70,7 @@
             発送までの日数
             %span
               必須
-            = f.collection_select :shipping_period_id, Shipping_period.all, :id, :name, prompt: "選択してください", class: 'input'
+            = f.collection_select :shipping_period_id, ShippingPeriod.all, :id, :name, prompt: "選択してください", class: 'input'
 
         .price
           価格（300〜）
