@@ -1,0 +1,11 @@
+= render "headder"
+
+.purchased-wrapper
+  .purchased-main
+    .purchased-content__done
+      %h1.purchased-content__done__text 購入完了しました
+      .purchased-main__continue
+        =link_to "買い物を続ける",root_path,class: "purchased-link"
+
+= render "footer"
+   

@@ -1,0 +1,52 @@
+.credit-wrapper
+  = render 'items/headder'
+  .credit-section
+    %section.credit-content
+      %h2.credit-content__head クレジットカード情報入力
+      .credit-content__main
+        = form_tag(pay_cards_path, method: :post, id: 'charge-form', name: "inputForm") do
+          .credit-content__field
+            .credit-content__main__form-group
+              %label.credit-content__field-label カード番号
+              %span.credit-content__main__form-require 必須
+              .credit-content__main__field-input
+                = text_field_tag "number", "", class: "credit-content__main__input-default", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+                %ul.credit-content__main__card-list
+                  %li
+                    = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/visa.svg?3850499208'), size: "49x20"
+                  %li
+                    = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/master-card.svg?3850499208'), size: "34x20"
+                  %li
+                    = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/saison-card.svg?3850499208'), size: "32x20"
+                  %li
+                    = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/jcb.svg?3850499208'), size: "34x20"
+                  %li
+                    = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/american_express.svg?3850499208'), size: "21x20"
+                  %li
+                    = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/dinersclub.svg?3850499208'), size: "32x20"
+                  %li
+                    = image_tag ('https://pcweb-assets.mercdn.net/assets/img/card/discover.svg?3850499208'), size: "32x20"
+          .credit-content__field
+            .credit-content__main__form-group.credit-content__chapter-main__form-expire
+              %label.credit-content__field-label 有効期限
+              %span.credit-content__main__form-require 必須
+              %br
+              .credit-content__main__field-input
+                = select_tag 'exp_month', options_for_select([["--",""],["01","1"], ["02","2"], ["03","3"], ["04","4"], ["05","5"], ["06","6"], ["07","7"], ["08","8"], ["09","9"], ["10","10"], ["11","11"], ["12","12"]],:selected=>"--")
+                %span 月／
+                = select_tag 'exp_year', options_for_select([["--",""],["20","2020"], ["21","2021"], ["22","2022"], ["23","2023"], ["24","2024"], ["25","2025"], ["26","2026"], ["27","2027"], ["28","2028"], ["29","2029"], ["30","2030"]],:selected=>"--")
+                %span 年
+          .credit-content__field
+            .credit-content__main__form-group
+              %label.credit-content__field-label セキュリティコード
+              %span.credit-content__main__form-require 必須
+              %ul.credit-content__main__has-error-text{ id: 'security-code-error-wrapper' }
+              .credit-content__main__seqcode
+                .credit-content__main__seqcode--text{ id: 'seqcode-tips-toggle' }
+                .credit-content__main__field-input
+                  = text_field_tag "cvc", "", class: "credit-content__main__input-default", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+                  .credit-content__main__form-question
+                    カード裏面の番号とは？
+                #card_token
+                  = submit_tag "追加する", id: "token_submit", class: 'credit-content__main__btn-default credit-content__main__btn-blue'
+= render 'items/footer'

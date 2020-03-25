@@ -86,3 +86,4 @@ gem 'gon'
 gem 'fog-aws'
 
 gem 'pry-rails'
+gem 'dotenv-rails'
