@@ -41,10 +41,8 @@ class ItemsController < ApplicationController
     @item = Item.new
     @user = current_user.id
     @item.photos.build
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
+      @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+      @category_parent_array.unshift("---")
   end
 
   def get_category_children
@@ -63,7 +61,6 @@ class ItemsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
-
     @category_children_array = []
     Category.where(ancestry: child_category.ancestry).each do |children|
       @category_children_array << children
@@ -89,8 +86,6 @@ class ItemsController < ApplicationController
     else 
       render :edit
     end
-    
-    @item.photos.new
   end
   
   def create
@@ -109,8 +104,6 @@ class ItemsController < ApplicationController
       end
     end
   end
-
-
 
   # def create
   #   @item = Item.new(item_params)

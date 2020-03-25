@@ -9,8 +9,8 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :photos
   belongs_to :category, optional: true
-  belongs_to :brand
+    validates :category, presence: { message: 'カテゴリーを選択してください' }
+  # belongs_to :brand
   has_many :comments
-  validates :category, presence: { message: 'カテゴリーを選択してください' }
   accepts_nested_attributes_for :photos
 end
