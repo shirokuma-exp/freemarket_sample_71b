@@ -90,16 +90,19 @@ class ItemsController < ApplicationController
       render :edit
     end
     
+    @item.photos.new
   end
   
   def create
     @item = Item.new(item_params)
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
     respond_to do |format|
       if @item.save
           params[:photos][:image].each do |image|
             @item.photos.create(image: image, item_id: @item.id)
           end
         format.html{redirect_to root_path}
+        format.json
       else
         @item.photos.build
         format.html{render action: 'new'}
