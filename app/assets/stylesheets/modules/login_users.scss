@@ -1,3 +1,46 @@
+.single-header {
+  padding: 20px;              /* 余白指定 */
+    text-align:  center;        /* 中央寄せ */
+    background-color:  #ddd;    /* 背景色指定 */
+    height: 100px;
+  &__1 {
+    font-size: 22px;
+    padding-bottom: 40px;
+    font-weight: 600;
+  }
+}
+.single-main {
+  max-width: 456px;
+  margin: 0 auto;
+  background: #fff;
+  .new_user {
+    padding: 24px 32px;
+    border: 0;
+  }
+  &__field2 {
+    margin: 24px 0 0;
+  }
+  &__field3 {
+    margin: 24px 0 0;
+  }
+  .actions {
+    margin: 24px 0 0;
+    .btn1 {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+    background: #3CCACE;
+    border: 1px solid #3CCACE;
+    color: #fff;
+    }
+  }
+}
 
 
 
