@@ -41,6 +41,55 @@ class ItemsController < ApplicationController
     @item = Item.new
     @user = current_user.id
     @item.photos.build
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+  end
+
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
+  def edit
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+  end
+
+  def update
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+    @category_parent_array = []
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+    @category_children_array = []
+    @category_children_array = Category.where(ancestry: child_category.ancestry)
+    @category_grandchildren_array = []
+    @category_grandchildren_array  = Category.where(ancestry: grandchild_category.ancestry)
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else 
+      render :edit
+    end
+    
   end
   
   def create

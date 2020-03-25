@@ -1,0 +1,51 @@
+.user-register
+  .header
+    .header__logo
+      = image_tag ("http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg"), size: "200x50", alt: "furima_logo"
+  .buydetails-main.clearfix
+    %section.buydetails-content
+      %h2.buydetails-content__head 購入完了
+      .buy-content__inner
+        .buy-item__box
+          %h3.buy-item-image
+          = image_tag asset_path("http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg"), size: "80x80"
+          .buy-item__detail
+            %p.buy-item__name NIKE スニーカー
+            %p.buy-item__price 
+              %span ¥10,000（税込）
+              %span.buy-item__send 送料込み
+      %section.buy-content-item
+        .buy-content__inner
+          .buy-form
+            %ul.buy-price__table
+              %li.buy-price
+                .buy-price__label 支払い金額
+                .buy-price__label__sell
+                  %span.deta-by-pay ¥10,000
+      %section.buydetails-content__info{ id: 'buydetails-bottom' }
+        .buydetails-content__inner
+          %h3 支払方法
+          %p.buydetails-content__infotext
+            =link_to "#", class:"buydetails-content__bt" do
+              %span ＋  登録してください
+      %section.buydetails-content__info
+        .buydetails-content__inner
+          %h3 配送先
+          %address.buydetails-content__user
+            =link_to root_path, class:"buydetails-content__bt" do
+              %span +  登録してください
+        .buydetails-content__text
+          %button.buydetails-content__btn  
+
+  .footer
+    .title
+      .title__a
+        プライバシーポリシー
+      .title__b
+        FURIMA利用規約
+      .title__c
+        特定商取引に関する表記
+    .item
+      = image_tag ("http://furima.tokyo/assets/logo-white-f61961ed5170064c5f33dd4524bdceeb5a5df2c83eb76fba31143f63fbab2c5e.svg"), size: "200x60", alt: "test"
+    .logo
+      © FURIMA, Inc.
