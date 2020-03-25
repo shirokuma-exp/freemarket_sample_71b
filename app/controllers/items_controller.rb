@@ -38,6 +38,9 @@ class ItemsController < ApplicationController
   end
   
   def new
+    @item = Item.new
+    @user = current_user.id
+    @item.photos.build
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
@@ -86,9 +89,7 @@ class ItemsController < ApplicationController
     else 
       render :edit
     end
-    @item = Item.new
-    @user = current_user.id
-    @item.photos.build
+    
   end
   
   def create

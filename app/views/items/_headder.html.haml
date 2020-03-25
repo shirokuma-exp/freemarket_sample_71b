@@ -12,21 +12,7 @@
       .h-header__extra__frame__lower
         .h-header__extra__frame__lower__left
           .h-header__extra__frame__lower__left__category
-            .header-wrapper--bottom
-      %nav.header-wrapper--bottom--left
-        %ul.search-navs
-          %li.search-navs__unit.category
-            %h2#category-btn
-              カテゴリーから探す
-
-            .category__box
-              %ul.category__box__parent#parent_ul.hidden-parent
-                - Category.where('ancestry IS NULL').each do |cat|
-                  %li.category__box__parent--list
-              %ul.category__box__child#child_ul.hidden-child
-
-              %ul.category__box__grandchild#grandchild_ul.hidden-grandchild
-              
+            
             =link_to 'カテゴリー', '#', class:'h-header__extra__frame__lower__left__category'
           .h-header__extra__frame__lower__left__brand
             -# ブランドにカーソルをかぶせるとプルダウン式に項目が出てくる
