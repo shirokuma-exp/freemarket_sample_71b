@@ -65,7 +65,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|stirng|null: false|
+|ancestry|stirng||
 ### Association
 - has_many :items
 - has_ancestry
