@@ -274,7 +274,6 @@
       &__apple{
         margin-right: 10px;
       }
-      &__google{}
     }
   }
 }
@@ -384,4 +383,17 @@
 .purchase-btn:hover {
   cursor: pointer;
   opacity:0.9;
+}
+
+.detail{
+  .category{
+    padding: 20px 30px;
+    margin: 0 auto;
+  }
+  .select-test{
+    padding: 20px 30px;
+    margin: 0 auto;
+    width: 100%;
+    height: 50px;
+  }
 }

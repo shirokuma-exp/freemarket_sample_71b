@@ -30,13 +30,12 @@
             %td hoge
           %tr
             %th カテゴリー
-            %td
-              = link_to '#' do
-                メンズ
-                %br
-                ジャケット/アウター
-                %br
-                ノーカラージャケット
+            %td 
+              = link_to @item.category.root.name,"#" 
+              %br
+              = link_to @item.category.parent.name,"#" 
+              %br
+              = link_to @item.category.name,"#" 
           %tr
             %th ブランド
             %td

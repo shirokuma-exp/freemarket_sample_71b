@@ -12,6 +12,14 @@ Rails.application.routes.draw do
 
   resources :items, only: [:new, :create, :edit, :update, :show, :destroy] do
     collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+    member do 
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+    collection do
       get 'purchase', to:'items#purchase'
       post 'pay', to:'items#pay'
       get 'done', to:'items#done'
