@@ -1,17 +1,23 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "", class: 'login-input-text'
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password", placeholder: "", class: 'login-input-text'
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+%header
+  .single-header
+    =link_to image_tag('http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg', size: "140x40"), root_path
+    .single-header__1
+      Log in
+%body
+  .single-main
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .single-main__field1
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "", class: 'login-input-text1'
+      .single-main__field2
+        = f.label :password
+        %br/
+        = f.password_field :password, autocomplete: "current-password", placeholder: "", class: 'login-input-text1'
+      - if devise_mapping.rememberable?
+        .single-main__field3
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .actions
+        = f.submit "ログイン", class: 'btn1'
+    = render "devise/shared/links"
