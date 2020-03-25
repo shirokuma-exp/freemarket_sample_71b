@@ -1,4 +1,4 @@
-= form_for '#' do |f|
+= form_for [@item] do |f|
   .main
     .infoForm
       .logo
@@ -6,20 +6,60 @@
           =image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
 
       .exhibitionBox
+
         .exhibitionImage
           出品画像 
           %span
             必須
           .exhibitionImageForm
             最大３枚までアップロードできます
-            = f.file_field :image, placeholder: "クリックしてファイルをアップロード"
+            = f.fields_for :photos do |image|
+              .dropzone-container.clearfix
+                #preview1
+                .dropzone-area
+                  = image.label :image, class: "dropzone-box", for: "upload-image" do
+                    .input_area
+                      = image.file_field :image, multiple: true, name: 'photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                    %p ここをクリックしてください
+                #preview2
+                .dropzone-area
+                  = image.label :image, class: "dropzone-box", for: "upload-image" do
+                    .input_area
+                      = image.file_field :image, multiple: true, name: 'photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                    %p ここをクリックしてください
+                #preview3
+                .dropzone-area
+                  = image.label :image, class: "dropzone-box", for: "upload-image" do
+                    .input_area
+                      = image.file_field :image, multiple: true, name: 'photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                    %p ここをクリックしてください
             %label.label
-            = fa_icon 'camera'
+              = fa_icon 'camera'
+
+
+
+            -#       .dropzone-area
+            -# = image.label :image, class: "dropzone-box", for: "upload-image" do
+            -#   .input_area
+            -#     = image.file_field :image, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+            -#   %p ここをクリックしてください
+
+
+
+
+
 
 
         .itemStatus
+          .user
+            ユーザーID
+            %span
+              必須
+            = f.text_field :user_id, :value => @user, placeholder: ""
+ 
+        .itemStatus
           .name
-            商品名  
+            商品名
             %span
               必須
             = f.text_field :name, placeholder: "〜文字まで"
@@ -35,18 +75,25 @@
             カテゴリー
             %span
               必須
-            = f.select :delivery_charge, [["", ""], ["", ""]], include_blank: '選択して下さい' 
+            = f.select :category_id, [["", ""], ["", ""]], include_blank: '選択して下さい' 
 
           .brand
             ブランド
             %span
               任意
-            = f.text_field :name, placeholder: "例）ベルサーチ"
+            = f.text_field :brand_id, placeholder: "例）ベルサーチ"
           .condition
             商品の状態
             %span
               必須
             = f.collection_select :condition_id, Condition.all, :id, :name, prompt: "選択してください", class: 'input'
+
+          .size
+            サイズ
+            %span
+              必須
+            = f.text_field :size, placeholder: "M"
+
 
         .delivery
           配送について
@@ -81,7 +128,7 @@
               販売価格
             .sellingPriceForm
               ¥
-              = f.number_field :content, placeholder: "半角数字"
+              = f.number_field :price, placeholder: "半角数字"
               
           -# .commision
           -#   販売手数料(10%)
@@ -94,5 +141,5 @@
           .sendBtn
             = f.submit "出品する", class: "send-btn"
           .returnBtn
-            = link_to '#' do
+            = link_to root_path do
               戻る
