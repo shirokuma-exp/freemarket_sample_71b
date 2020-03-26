@@ -56,6 +56,12 @@
             %span
               必須
             = f.text_field :user_id, :value => @user, placeholder: ""
+
+        .itemStatus
+          .user
+            -# 商品のステータス
+            %span
+            = f.hidden_field :status, :value => "1", placeholder: ""
  
         .itemStatus
           .name
@@ -146,3 +152,4 @@
           .returnBtn
             = link_to root_path do
               戻る
+              
