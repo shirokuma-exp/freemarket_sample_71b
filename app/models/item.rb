@@ -8,12 +8,10 @@ class Item < ApplicationRecord
   belongs_to_active_hash :region
 
   
-  # belongs_to :buyer, class_name: "User"
   belongs_to :user
   has_many :photos
   belongs_to :category, optional: true
     validates :category, presence: { message: 'カテゴリーを選択してください' }
-  # belongs_to :brand
   has_many :comments
   accepts_nested_attributes_for :photos
 end
