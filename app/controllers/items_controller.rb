@@ -9,11 +9,16 @@ class ItemsController < ApplicationController
   end
   
   def new
-    @item = Item.new
-    @user = current_user.id
-    @item.photos.build
-      @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-      @category_parent_array.unshift("---")
+    if user_signed_in?
+      @item = Item.new
+      @user = current_user.id
+      @item.photos.build
+        @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+        @category_parent_array.unshift("---")
+    else
+      redirect_to root_path
+      flash[:alert] = 'ログインしてください。'
+    end
   end
 
   def get_category_children
