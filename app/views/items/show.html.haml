@@ -2,89 +2,89 @@
   = render "headder"
   
 .body
-  - @items.each do |item|
-    .itemInformation
-      - if user_signed_in? && current_user.id == item.user_id
-        .editDestroyLink
-          = link_to '削除', '#'
-          = link_to '編集', '#'
+  -# - @item.each do |item|
+  .itemInformation
+    - if user_signed_in? && current_user.id == @item.user_id
+      .editDestroyLink
+        = link_to '削除', '#'
+        = link_to '編集', '#'
 
-      .item
-        .item__name
-          = item.name
-        .item__image
-          - item.photos.each do |n|
-            = image_tag n.image.url
-            -break if i=0
-          .item__image__list
-            %ul
-              - item.photos.each do |n|
-                %li
-                  = image_tag n.image.url
+    .item
+      .item__name
+        = @item.name
+      .item__image
+        - @item.photos.each do |n|
+          = image_tag n.image.url
+          -break if i=0
+        .item__image__list
+          %ul
+            - @item.photos.each do |n|
+              %li
+                = image_tag n.image.url
 
-        .item__price
-          = "¥#{item.price}"
-        .item__taxEtc
-          (税込)送料込み
-        .item__description
-          = item.description
-        .item__table
-          %table
-            %tr
-              %th 出品者
-              %td 
-                = item.user.nickname
-            %tr
-              %th カテゴリー
-              %td
-                = link_to '#' do
-                  メンズ
-                  %br
-                  ジャケット/アウター
-                  %br
-                  ノーカラージャケット
-            %tr
-              %th ブランド
-              %td
-                -# = item.brand
-            %tr
-              %th 商品のサイズ
-              %td
-                = item.size
-            %tr
-              %th 商品の状態
-              %td 
-                = item.condition.name
-            %tr
-              %th 配送料の負担
-              %td 
-                = item.delivery_charge.name
-            %tr
-              %th 発送元の地域
-              %td 
-                -# = link_to '#' do
-                = item.region.name
-            %tr
-              %th 発送の目安
-              %td
-                = item.shipping_period.name
-            
-        .btns
-          .like
-            = link_to '#' do
-              = fa_icon 'heart'
-              お気に入り 0
-          .report
-            = link_to '#' do
-              = fa_icon 'flag'
-              不適切な商品の通報
-
-        - if user_signed_in? && current_user.id == item.user_id
+      .item__price
+        = "¥#{@item.price}"
+      .item__taxEtc
+        (税込)送料込み
+      .item__description
+        = @item.description
+      .item__table
+        %table
+          %tr
+            %th 出品者
+            %td 
+              = @item.user.nickname
+          %tr
+            %th カテゴリー
+            %td
+              = link_to '#' do
+                メンズ
+                %br
+                ジャケット/アウター
+                %br
+                ノーカラージャケット
+          %tr
+            %th ブランド
+            %td
+              = @item.brand_name
+          %tr
+            %th 商品のサイズ
+            %td
+              = @item.size
+          %tr
+            %th 商品の状態
+            %td 
+              = @item.condition.name
+          %tr
+            %th 配送料の負担
+            %td 
+              = @item.delivery_charge.name
+          %tr
+            %th 発送元の地域
+            %td 
+              -# = link_to '#' do
+              = @item.region.name
+          %tr
+            %th 発送の目安
+            %td
+              = @item.shipping_period.name
           
-        - else 
-          .ToPurchasePageBtn
-            = form_for '#' do |f|
-              = f.submit "購入画面へ", class: "purchaseBtn"
+      .btns
+        .like
+          = link_to '#' do
+            = fa_icon 'heart'
+            お気に入り 0
+        .report
+          = link_to '#' do
+            = fa_icon 'flag'
+            不適切な商品の通報
+
+      - if user_signed_in? && current_user.id == @item.user_id
+        
+      - else 
+        .ToPurchasePageBtn
+          = form_for '#' do |f|
+            = f.submit "購入画面へ", class: "purchaseBtn"
 
   .commentBox
     .commentForm
