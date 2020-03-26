@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # resources :brands, only: [:new, :create] do
+  # end
+
   resources :users, only: [:edit, :update] do
     resources :addresses, only: [:new, :create]
   end

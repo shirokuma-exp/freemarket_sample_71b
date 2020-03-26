@@ -71,6 +71,7 @@ class ItemsController < ApplicationController
   # end
 
   def show
+    @items = Item.where(id: params[:id])
   end
 
   private

@@ -1,76 +1,90 @@
 .header
   = render "headder"
-
+  
 .body
-  .itemInformation
-    .item
-      .item__name
-        product2
-      .item__image
-        = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png'
-        .item__image__list
-          %ul
-            %li
-              = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png'
-            %li
-              = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png'
-            %li
-              = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png'
+  - @items.each do |item|
+    .itemInformation
+      - if user_signed_in? && current_user.id == item.user_id
+        .editDestroyLink
+          = link_to '削除', '#'
+          = link_to '編集', '#'
+
+      .item
+        .item__name
+          = item.name
+        .item__image
+          - item.photos.each do |n|
+            = image_tag n.image.url
+            -break if i=0
+          .item__image__list
+            %ul
+              - item.photos.each do |n|
+                %li
+                  = image_tag n.image.url
+
+        .item__price
+          = "¥#{item.price}"
+        .item__taxEtc
+          (税込)送料込み
+        .item__description
+          = item.description
+        .item__table
+          %table
+            %tr
+              %th 出品者
+              %td 
+                = item.user.nickname
+            %tr
+              %th カテゴリー
+              %td
+                = link_to '#' do
+                  メンズ
+                  %br
+                  ジャケット/アウター
+                  %br
+                  ノーカラージャケット
+            %tr
+              %th ブランド
+              %td
+                -# = item.brand
+            %tr
+              %th 商品のサイズ
+              %td
+                = item.size
+            %tr
+              %th 商品の状態
+              %td 
+                = item.condition.name
+            %tr
+              %th 配送料の負担
+              %td 
+                = item.delivery_charge.name
+            %tr
+              %th 発送元の地域
+              %td 
+                -# = link_to '#' do
+                = item.region.name
+            %tr
+              %th 発送の目安
+              %td
+                = item.shipping_period.name
             
-      .item__price
-        ¥20000
-      .item__taxEtc
-        (税込)送料込み
-      .item__description
-        うまそう親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
-      .item__table
-        %table
-          %tr
-            %th 出品者
-            %td hoge
-          %tr
-            %th カテゴリー
-            %td
-              = link_to '#' do
-                メンズ
-                %br
-                ジャケット/アウター
-                %br
-                ノーカラージャケット
-          %tr
-            %th ブランド
-            %td
-              -# = link_to '#' do
-              -#  
-          %tr
-            %th 商品のサイズ
-            %td
-              -# = link_to '#' do
-              -#   
-          %tr
-            %th 商品の状態
-            %td hoge
-          %tr
-            %th 配送料の負担
-            %td hoge
-          %tr
-            %th 発送元の地域
-            %td 
-              = link_to '#' do
-                青森
-          %tr
-            %th 発送の目安
-            %td hoge
+        .btns
+          .like
+            = link_to '#' do
+              = fa_icon 'heart'
+              お気に入り 0
+          .report
+            = link_to '#' do
+              = fa_icon 'flag'
+              不適切な商品の通報
+
+        - if user_signed_in? && current_user.id == item.user_id
           
-      .btns
-        .like
-          = link_to '#' do
-            = fa_icon 'heart'
-            お気に入り 0
-        .report
-          = link_to '#' do
-            = fa_icon 'flag'
-            不適切な商品の通報
+        - else 
+          .ToPurchasePageBtn
+            = form_for '#' do |f|
+              = f.submit "購入画面へ", class: "purchaseBtn"
 
   .commentBox
     .commentForm
