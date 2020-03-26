@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :region
 
   
+  belongs_to :buyer, class_name: "User"
   belongs_to :user
   has_many :photos
   belongs_to :category, optional: true
