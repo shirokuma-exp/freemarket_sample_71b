@@ -1,65 +1,73 @@
 .header
   = render "headder"
-
+  
 .body
+  -# - @item.each do |item|
   .itemInformation
+    - if user_signed_in? && current_user.id == @item.user_id
+      .editDestroyLink
+        = link_to '削除', '#'
+        = link_to '編集', '#'
+
     .item
       .item__name
-        product2
+        = @item.name
       .item__image
-        = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png'
+        - @item.photos.each do |n|
+          = image_tag n.image.url
+          -break if i=0
         .item__image__list
           %ul
-            %li
-              = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png'
-            %li
-              = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png'
-            %li
-              = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png'
-            
+            - @item.photos.each do |n|
+              %li
+                = image_tag n.image.url
+
       .item__price
-        ¥20000
+        = "¥#{@item.price}"
       .item__taxEtc
         (税込)送料込み
       .item__description
-        うまそう親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+        = @item.description
       .item__table
         %table
           %tr
             %th 出品者
-            %td hoge
+            %td 
+              = @item.user.nickname
           %tr
             %th カテゴリー
-            %td 
-              = link_to @item.category.root.name,"#" 
-              %br
-              = link_to @item.category.parent.name,"#" 
-              %br
-              = link_to @item.category.name,"#" 
+            %td
+              = link_to '#' do
+                メンズ
+                %br
+                ジャケット/アウター
+                %br
+                ノーカラージャケット
           %tr
             %th ブランド
             %td
-              -# = link_to '#' do
-              -#  
+              = @item.brand_name
           %tr
             %th 商品のサイズ
             %td
-              -# = link_to '#' do
-              -#   
+              = @item.size
           %tr
             %th 商品の状態
-            %td hoge
+            %td 
+              = @item.condition.name
           %tr
             %th 配送料の負担
-            %td hoge
+            %td 
+              = @item.delivery_charge.name
           %tr
             %th 発送元の地域
             %td 
-              = link_to '#' do
-                青森
+              -# = link_to '#' do
+              = @item.region.name
           %tr
             %th 発送の目安
-            %td hoge
+            %td
+              = @item.shipping_period.name
           
       .btns
         .like
@@ -70,6 +78,13 @@
           = link_to '#' do
             = fa_icon 'flag'
             不適切な商品の通報
+
+      - if user_signed_in? && current_user.id == @item.user_id
+        
+      - else 
+        .ToPurchasePageBtn
+          = form_for '#' do |f|
+            = f.submit "購入画面へ", class: "purchaseBtn"
 
   .commentBox
     .commentForm
