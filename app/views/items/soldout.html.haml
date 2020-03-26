@@ -27,6 +27,7 @@
       .item__taxEtc
         (税込)送料込み
       .item__buy
+        = link_to '購入画面に進む', purchase_item_path, class:'item__buy__btn'
       .item__description
         = @item.description
       .item__table
@@ -84,7 +85,7 @@
         
       - else 
         .ToPurchasePageBtn
-          = link_to '購入画面に進む', purchase_item_path, class: "purchaseBtn"
+          売り切れです
 
   .commentBox
     .commentForm
