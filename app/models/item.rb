@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   # belongs_to_active_hash :delivery_way
   # belongs_to_active_hash :shipping_period
   belongs_to_active_hash :prefecture
-  
+  belongs_to :buyer, class_name: "User"
   belongs_to :user
   has_many :photos
   belongs_to :category, optional: true
