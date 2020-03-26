@@ -44,6 +44,7 @@
 |like|integer||
 |region_id|integer(ah)|null: false|
 |user_id|integer|null: false, foreign_key: true|
+|buyer_id|integer||
 |category_id|integer|null: false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
 ### Association
@@ -65,7 +66,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|stirng|null: false|
+|ancestry|stirng||
 ### Association
 - has_many :items
 - has_ancestry
