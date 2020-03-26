@@ -10,15 +10,23 @@
             .add-credit-form
               .add-credit
                 .add-credit-logo
-                  カード名
-                .add-credit-number
-                  = "**** **** **** " + @default_card_information.last4
-                .add-credit-dead
-                  - exp_month = @default_card_information.exp_month.to_s
-                  - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-                  = exp_month + " / " + exp_year
-                = link_to new_card_path, method: :delete, class: "credit-delete-btn", id:"delete" do
-                  削除する
+                  クレジットカード一覧
+                - if @cards.present?
+                  .add-credit-logo
+                    カード名
+                  .add-credit-number
+                    = "**** **** **** " + @default_card_information.last4
+                  .add-credit-dead
+                    - exp_month = @default_card_information.exp_month.to_s
+                    - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                    = exp_month + " / " + exp_year
+                    = form_tag(delete_user_cards_path, method: :post, id: 'charge-form',  name: "inputForm", class: "credit-delete-btn") do
+                      %input{ type: "hidden", name: "card_id", value: "" }
+                      %button.credit-delete-btn 削除する
+                - else
+                  = link_to new_user_card_path, class: "credit-pay-way" do
+                    カードを登録する
+                
           .credit-content__section__way
             = link_to "#", class: "credit-pay-way" do
               支払い方法について＞
