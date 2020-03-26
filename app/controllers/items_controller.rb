@@ -79,7 +79,7 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    @item = Item.find(params[:item_id])
+    # @item = Item.find(params[:item_id])
     card = Card.find_by(user_id: current_user.id)
     if @cards.blank?
       redirect_to controller: "cards", action: "new"
@@ -91,14 +91,16 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    item = Item.find(params[:item_id])
-    item.update(buyer_id: current_user.id)
+    # item = Item.find(params[:item_id])
+    # item.update(buyer_id: current_user.id)
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
-    :amount => item.price, 
-    :customer => card.customer_id, 
+    :amount => @item.price, 
+    :customer => @cards.customer_id, 
     :currency => 'jpy', 
     )
+    @item_buyer= Item.find(params[:id])
+    @item_buyer.update(buyer_id: current_user.id)
     redirect_to action: 'done' 
   end
 

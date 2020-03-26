@@ -3,11 +3,13 @@ class CardsController < ApplicationController
   before_action :set_card,only: [:show,:delete]
 
   def new
+    @user = User.find(params[:user_id])
     card = Card.where(user_id: current_user.id)
     redirect_to action: "show" if card.exists?
   end
 
   def pay
+    @user = User.find(params[:user_id])
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
       redirect_to action: "new"
@@ -29,7 +31,8 @@ class CardsController < ApplicationController
     end
   end
   
-  def delete
+  def destroy
+    @user = User.find(params[:user_id])
     unless @cards.blank?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@cards.customer_id)
@@ -41,6 +44,7 @@ class CardsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:user_id])
     if @cards.blank?
       redirect_to controller: "cards", action: "new"
     else

@@ -21,6 +21,8 @@
         ¥20000
       .item__taxEtc
         (税込)送料込み
+      .item__buy
+        = link_to '購入画面に進む', purchase_item_path, class:'item__buy__btn'
       .item__description
         うまそう親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
       .item__table
@@ -31,11 +33,11 @@
           %tr
             %th カテゴリー
             %td 
-              = link_to @item.category.root.name,"#" 
-              %br
-              = link_to @item.category.parent.name,"#" 
-              %br
-              = link_to @item.category.name,"#" 
+              -# = link_to @item.category.root.name,"#" 
+              -# %br
+              -# = link_to @item.category.parent.name,"#" 
+              -# %br
+              -# = link_to @item.category.name,"#" 
           %tr
             %th ブランド
             %td

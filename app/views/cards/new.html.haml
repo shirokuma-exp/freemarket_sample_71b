@@ -4,7 +4,7 @@
     %section.credit-content
       %h2.credit-content__head クレジットカード情報入力
       .credit-content__main
-        = form_tag(pay_cards_path, method: :post, id: 'charge-form', name: "inputForm") do
+        = form_tag(pay_user_cards_path, method: :post, id: 'charge-form', name: "inputForm") do
           .credit-content__field
             .credit-content__main__form-group
               %label.credit-content__field-label カード番号
