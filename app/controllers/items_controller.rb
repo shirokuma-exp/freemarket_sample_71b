@@ -88,12 +88,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # # @items = Item.where(id: params[:id])
     @item = Item.find(params[:id])
-    # @user = User.find(params[:id])
-    # @items = @user.items
-
-
   end
   
   def pay
