@@ -11,10 +11,11 @@ FactoryBot.define do
     region_id           {"1"}
     price               {"1000"}
     like                {"hoge"}
+    user_id             {"1"}
     buyer_id            {"1"}
+    status              {"1"}
     category_id         {"1"}
     brand_name          {"hoge"}
-    user
   end
 
 end
