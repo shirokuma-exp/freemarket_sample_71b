@@ -56,6 +56,12 @@
             %span
               必須
             = f.text_field :user_id, :value => @user, placeholder: ""
+
+        .itemStatus
+          .user
+            -# 商品のステータス
+            %span
+            = f.hidden_field :status, :value => "1", placeholder: ""
  
         .itemStatus
           .name
@@ -84,7 +90,7 @@
             ブランド
             %span
               任意
-            = f.text_field :brand_id, placeholder: "例）ベルサーチ"
+            = f.text_field :brand_name, placeholder: "例）ベルサーチ"
           .condition
             商品の状態
             %span
@@ -111,7 +117,7 @@
               必須
             = f.collection_select :delivery_way_id, DeliveryWay.all, :id, :name, prompt: "選択してください", class: 'input'
 
-          .destination
+          .region
             発送元の地域
             %span
               必須
@@ -146,3 +152,4 @@
           .returnBtn
             = link_to root_path do
               戻る
+              

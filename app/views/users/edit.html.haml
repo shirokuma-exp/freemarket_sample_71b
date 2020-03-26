@@ -20,7 +20,7 @@
               =link_to 'ログアウト', destroy_user_session_path , method: :delete, class:'h-header__extra__frame__lower__right__log'
             .h-header__extra__frame__lower__right__new
               -# カード登録をクリックするとカード登録画面に遷移する
-              =link_to 'カード登録','#', class:'h-header__extra__frame__lower__right__new'
+              =link_to 'カード登録',new_user_card_path(current_user), class:'h-header__extra__frame__lower__right__new'
   .mypagecontent
     .mypagecontent__all
       .mypagecontent__all__picture

@@ -118,3 +118,28 @@
   font-weight: bold;
   font-size: 1.5em;
 }
+
+.purchase-select{
+  display: block;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-align: center;
+  background-color: #3CCACE;
+  width: 60%;
+  height: 40px;
+  color: #fff;
+  border-radius: 2px;
+  padding: 4px 0;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 5px;
+}
+
+.purchase__sold-out{
+  font-size: 1.2em;
+  font-weight: bold;
+  color: red;
+  letter-spacing: 2px;
+  width: 100%;
+  text-align: center;
+}

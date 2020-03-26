@@ -92,9 +92,11 @@
     }
   }
   .credit-delete-btn{
-    color: #ffb340;
-    padding-top: 5px;
-    padding-bottom: 15px;
+    color: rgba($color: #000000, $alpha: 0.8);
+    padding:10px 10px;
+    margin:0 -5px;
+    font-weight: bold;
+    font-size: 14px;
   }
   .credit-pay-way{
     color: #ffb340;

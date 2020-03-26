@@ -44,6 +44,8 @@
 |like|integer||
 |region_id|integer(ah)|null: false|
 |user_id|integer|null: false, foreign_key: true|
+|buyer_id|integer||
+|status|integer||
 |category_id|integer|null: false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
 ### Association
