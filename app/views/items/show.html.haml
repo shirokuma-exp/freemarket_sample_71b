@@ -2,12 +2,11 @@
   = render "headder"
   
 .body
-  -# - @item.each do |item|
   .itemInformation
     - if user_signed_in? && current_user.id == @item.user_id
       .editDestroyLink
         = link_to '削除', '#'
-        = link_to '編集', '#'
+        = link_to '編集', edit_item_path(item.id)
 
     .item
       .item__name
@@ -62,7 +61,6 @@
           %tr
             %th 発送元の地域
             %td 
-              -# = link_to '#' do
               = @item.region.name
           %tr
             %th 発送の目安

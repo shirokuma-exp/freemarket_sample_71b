@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_card,only: [:purchase, :pay]
-  before_action :set_item,only: [:purchase, :pay]
+  before_action :set_item,only: [:edit, :show, :purchase, :pay]
+  before_action :move_to_index, except: [:index, :show]
+
 
   def index
     @items = Item.all.page(params[:page]).order("created_at DESC").per(10)
@@ -14,6 +16,22 @@ class ItemsController < ApplicationController
     @item.photos.build
       @category_parent_array = Category.where(ancestry: nil).pluck(:name)
       @category_parent_array.unshift("---")
+  end
+
+  def create
+    @item = Item.new(item_params)
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+    respond_to do |format|
+      if @item.save
+          params[:photos][:image].each do |image|
+            @item.photos.create(image: image, item_id: @item.id)
+          end
+        format.html{redirect_to root_path}
+      else
+        @item.photos.build
+        format.html{render action: 'new'}
+      end
+    end
   end
 
   def get_category_children
@@ -44,6 +62,9 @@ class ItemsController < ApplicationController
   end
 
   def update
+    item = Item.find(params[:id])
+    item.update(item_params)
+
     grandchild_category = @item.category
     child_category = grandchild_category.parent
     @category_parent_array = []
@@ -59,20 +80,7 @@ class ItemsController < ApplicationController
     end
   end
   
-  def create
-    @item = Item.new(item_params)
-    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-    respond_to do |format|
-      if @item.save
-          params[:photos][:image].each do |image|
-            @item.photos.create(image: image, item_id: @item.id)
-          end
-        format.html{redirect_to root_path}
-      else
-        @item.photos.build
-        format.html{render action: 'new'}
-      end
-    end
+  def show
   end
 
   def purchase
@@ -87,10 +95,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
-  end
-  
   def pay
     item = Item.find(params[:item_id])
     item.update(buyer_id: current_user.id)
@@ -117,6 +121,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
   end
 
 end
