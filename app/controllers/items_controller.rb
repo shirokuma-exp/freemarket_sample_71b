@@ -75,9 +75,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def purchase
     @item = Item.find(params[:item_id])
     card = Card.find_by(user_id: current_user.id)
@@ -90,6 +87,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+  
   def pay
     item = Item.find(params[:item_id])
     item.update(buyer_id: current_user.id)
@@ -107,7 +108,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :size, :delivery_charge_id, :delivery_way_id, :region_id, :shipping_period_id, :price, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :category_id, :brand_name, :condition_id, :size, :delivery_charge_id, :delivery_way_id, :region_id, :shipping_period_id, :price, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def set_card
