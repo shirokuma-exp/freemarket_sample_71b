@@ -31,7 +31,7 @@ class CardsController < ApplicationController
     end
   end
   
-  def destroy
+  def delete
     @user = User.find(params[:user_id])
     unless @cards.blank?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]

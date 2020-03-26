@@ -83,8 +83,10 @@
       - if user_signed_in? && current_user.id == @item.user_id
         
       - else 
-        .ToPurchasePageBtn
-          = link_to '購入画面に進む', purchase_item_path, class: "purchaseBtn"
+        - if @item.status == 1
+          = link_to "購入画面に進む", purchase_item_path, class: "purchase-select" 
+        - else
+          .purchase__sold-out SOLD OUT
 
   .commentBox
     .commentForm

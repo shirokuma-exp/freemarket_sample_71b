@@ -99,6 +99,7 @@ class ItemsController < ApplicationController
     )
     @item_buyer= Item.find(params[:id])
     @item_buyer.update(buyer_id: current_user.id)
+    @item.update(status: 0)
     redirect_to action: 'done' 
   end
 
