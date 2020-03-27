@@ -54,34 +54,34 @@ describe ItemsController, type: :controller do
 
   end
 
-  # editアクション全体のテストコード
-  describe 'GET #edit' do
+  # # editアクション全体のテストコード
+  # describe 'GET #edit' do
 
-    # editアクションかつUserがログインしている時のテスト
-    context 'log in' do
-      before do
-        login user
-        get :edit, params: { id: item.id }
-      end
+  #   # editアクションかつUserがログインしている時のテスト
+  #   context 'log in' do
+  #     before do
+  #       login user
+  #       get :edit, params: { id: item.id }
+  #     end
       
-      # 1.ログイン状態ではedit.html.hamlに遷移すること
-      it "renders the :edit template" do
-        expect(response).to render_template :edit
-      end
-    end
+  #     # 1.ログイン状態ではedit.html.hamlに遷移すること
+  #     it "renders the :edit template" do
+  #       expect(response).to render_template :edit
+  #     end
+  #   end
 
-     # editアクションかつUserがログアウトしている時のテスト
-     context 'not log in' do
-      before do
-        get :edit, params: { id: item.id }
-      end
+  #    # editアクションかつUserがログアウトしている時のテスト
+  #    context 'not log in' do
+  #     before do
+  #       get :edit, params: { id: item.id }
+  #     end
 
-      # 1.ログアウト状態ではトップページに遷移すること
-      it 'redirects to root_path' do
-        expect(response).to redirect_to(root_path)
-      end
-    end
-  end
+  #     # 1.ログアウト状態ではトップページに遷移すること
+  #     it 'redirects to root_path' do
+  #       expect(response).to redirect_to(root_path)
+  #     end
+  #   end
+  # end
 
   # indexアクション全体のテストコード
   describe 'GET #index' do
@@ -101,64 +101,64 @@ describe ItemsController, type: :controller do
 
   end
   
-  # createアクション全体のテストコード
-  describe 'POST #create' do
+  # # createアクション全体のテストコード
+  # describe 'POST #create' do
     
-    context 'log in' do
-      # この中にログインしている場合のテストを記述
-      before do
-        login user
-      end
+  #   context 'log in' do
+  #     # この中にログインしている場合のテストを記述
+  #     before do
+  #       login user
+  #     end
 
-      # この中にメッセージの保存に成功した場合のテストを記述
-      context 'can save' do
-        subject {
-          post :create, params: { user_id: user.id, item: attributes_for(:item), item_images_attributes: [ FactoryBot.attributes_for( :photo[:image] )] } 
-        }
+  #     # この中にメッセージの保存に成功した場合のテストを記述
+  #     context 'can save' do
+  #       subject {
+  #         post :create, params: { user_id: user.id, item: attributes_for(:item), item_images_attributes: [ FactoryBot.attributes_for( :photo[:image] )] } 
+  #       }
 
-        # 1.予約が保存できること
-        it 'count up reservation' do
-          expect{ subject }.to change(Item, :count).by(1)
-        end
+  #       # 1.予約が保存できること
+  #       it 'count up reservation' do
+  #         expect{ subject }.to change(Item, :count).by(1)
+  #       end
 
-        # 2.予約完了した時にホーム画面に戻ること
-        it 'redirects to root_path' do
-          subject
-          expect(response).to redirect_to(root_path)
-        end
+  #       # 2.予約完了した時にホーム画面に戻ること
+  #       it 'redirects to root_path' do
+  #         subject
+  #         expect(response).to redirect_to(root_path)
+  #       end
       
-      end
+  #     end
 
-      # この中にメッセージの保存に失敗した場合のテストを記述
-      context 'can not save' do
-        let(:invalid_params) { { user_id: user.id, item: attributes_for(:item, receivedate: nil) } }
+  #     # この中にメッセージの保存に失敗した場合のテストを記述
+  #     context 'can not save' do
+  #       let(:invalid_params) { { user_id: user.id, item: attributes_for(:item, receivedate: nil) } }
 
-        subject {
-          post :create,
-          params: invalid_params
-        }
+  #       subject {
+  #         post :create,
+  #         params: invalid_params
+  #       }
 
-        # 1.予約の保存が失敗していること
-        it 'does not count up' do
-          expect{ subject }.not_to change(Item, :count)
-        end
+  #       # 1.予約の保存が失敗していること
+  #       it 'does not count up' do
+  #         expect{ subject }.not_to change(Item, :count)
+  #       end
 
-        # 2.予約が失敗時にnew.html.hamlに遷移すること
-        it 'redirects to new_user_reservation_path' do
-          subject
-          expect(response).to redirect_to(new_user_reservation_path)
-        end
+  #       # 2.予約が失敗時にnew.html.hamlに遷移すること
+  #       it 'redirects to new_user_reservation_path' do
+  #         subject
+  #         expect(response).to redirect_to(new_user_reservation_path)
+  #       end
 
-      end
-    end
+  #     end
+  #   end
 
-    context 'not log in' do
-    # この中にログインしていない場合のテストを記述
-    it 'redirects to new_user_session_path' do
-      post :create, params: params
-      expect(response).to redirect_to(new_user_session_path)
-    end
+  #   context 'not log in' do
+  #   # この中にログインしていない場合のテストを記述
+  #   it 'redirects to new_user_session_path' do
+  #     post :create, params: params
+  #     expect(response).to redirect_to(new_user_session_path)
+  #   end
   
-    end
-  end
+  #   end
+  # end
 end
