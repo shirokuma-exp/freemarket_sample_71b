@@ -7,7 +7,7 @@
     - if user_signed_in? && current_user.id == @item.user_id
       .editDestroyLink
         = link_to '削除', '#'
-        = link_to '編集', '#'
+        = link_to '編集', edit_item_path(@item.id)
 
     .item
       .item__name
@@ -26,6 +26,7 @@
         = "¥#{@item.price}"
       .item__taxEtc
         (税込)送料込み
+      .item__buy
       .item__description
         = @item.description
       .item__table
@@ -36,13 +37,12 @@
               = @item.user.nickname
           %tr
             %th カテゴリー
-            %td
-              = link_to '#' do
-                メンズ
-                %br
-                ジャケット/アウター
-                %br
-                ノーカラージャケット
+            %td.right-lists 
+              = link_to @item.category.root.name,"#" 
+              %br
+              = link_to @item.category.parent.name,"#" 
+              %br
+              = link_to @item.category.name,"#"
           %tr
             %th ブランド
             %td
@@ -82,9 +82,10 @@
       - if user_signed_in? && current_user.id == @item.user_id
         
       - else 
-        .ToPurchasePageBtn
-          = form_for '#' do |f|
-            = f.submit "購入画面へ", class: "purchaseBtn"
+        - if @item.status == 1
+          = link_to "購入画面に進む", purchase_item_path, class: "purchase-select" 
+        - else
+          .purchase__sold-out SOLD OUT
 
   .commentBox
     .commentForm
