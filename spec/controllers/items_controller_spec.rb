@@ -6,6 +6,7 @@ describe ItemsController, type: :controller do
   # letメソッドは初回の呼び出し時のみ実行される
   let(:user)        { create(:user) }
   let(:item)        { create(:item) }
+
   # newアクション全体のテストコード
   describe 'GET #new' do
 
@@ -52,4 +53,32 @@ describe ItemsController, type: :controller do
 
   end
 
+  # editアクション全体のテストコード
+  describe 'GET #edit' do
+
+    # editアクションかつUserがログインしている時のテスト
+    context 'log in' do
+      before do
+        login user
+        get :edit, params: { id: item.id }
+      end
+      
+      # 1.ログイン状態ではedit.html.hamlに遷移すること
+      it "renders the :edit template" do
+        expect(response).to render_template :edit
+      end
+    end
+
+     # editアクションかつUserがログアウトしている時のテスト
+     context 'not log in' do
+      before do
+        get :edit, params: { id: item.id }
+      end
+
+      # 1.ログアウト状態ではトップページに遷移すること
+      it 'redirects to root_path' do
+        expect(response).to redirect_to(root_path)
+      end
+    end
+  end
 end
