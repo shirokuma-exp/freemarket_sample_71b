@@ -2,6 +2,7 @@ class CardsController < ApplicationController
   require "payjp"
   before_action :set_card,only: [:show,:delete]
   before_action :set_user,only: [:new,:pay,:delete,:show]
+  before_action :set_search
 
   def new
     card = Card.where(user_id: current_user.id)
@@ -49,6 +50,11 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.retrieve(@cards.customer_id)
       @default_card_information = customer.cards.retrieve(@cards.card_id)
     end
+  end
+
+  def set_search
+    @search = Item.ransack(params[:q]) 
+    @search_items = @search.result(distinct: true)
   end
 
   private

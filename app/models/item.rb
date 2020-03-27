@@ -14,4 +14,5 @@ class Item < ApplicationRecord
     validates :category, presence: { message: 'カテゴリーを選択してください' }
   has_many :comments
   accepts_nested_attributes_for :photos
+  scope :searches, -> (search){where('name LIKE(?)', "%#{search}%")}
 end
