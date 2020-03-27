@@ -7,23 +7,20 @@
       .purchased-content__item-box
         .purchased-content__item-box__item
           .purchased-content__item-box__item__image
-            -# = image_tag @item.item_images.first.image_url.to_s
-            画像
+            - @item.photos.each do |n|
+              = image_tag n.image.url,class: 'purchased_image'
           .purchased-content__item-box__item__detail
             .purchased-content__item-box__item__detail__name
-              -# = @item.name
-              商品名
+              = @item.name
             .purchased-content__item-box__item__detail__price
-              -# %p ¥#{@item.price} （税込）送料込み
-              ¥ 1000（税込）送料込み
+              %p ¥#{@item.price} （税込）送料込み
       .purchased-content__price-box
         .purchased-content__price-box__price
           .purchased-content__price-box__price__top
             .purchased-content__price-box__price__top__left
               支払い金額
             .purchased-content__price-box__price__top__right
-              -# ¥ #{@item.price}
-              ¥ 1000
+              %p ¥#{@item.price}
         .purchased-content__price-box__way
           .purchased-content__price-box__way__top
             %h1.purchased-content__title 支払い方法
