@@ -47,6 +47,10 @@
           &__image{
             width: 150px;
             height: 150px;
+              .purchased_image{
+                width: 150px;
+                height: 150px;
+              }
           }
           &__detail{
             padding-left: 10px;
