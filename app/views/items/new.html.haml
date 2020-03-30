@@ -96,8 +96,7 @@
             サイズ
             %span
               必須
-            = f.text_field :size, placeholder: "M"
-
+            = f.select :size, [["S", "S"], ["M", "M"], ["L", "L"], ["XL", "XL"]], include_blank: "選択してください"
 
         .delivery
           配送について
