@@ -1,8 +1,10 @@
 class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_card,only: [:purchase, :pay]
-  before_action :set_item,only: [:purchase, :pay]
+  before_action :set_item,only: [:edit, :show, :purchase, :pay]
+  before_action :move_to_index, except: [:index, :show]
   before_action :set_search
+
 
   def index
     @items = Item.all.page(params[:page]).order("created_at DESC").per(10)
@@ -19,6 +21,22 @@ class ItemsController < ApplicationController
     else
       redirect_to root_path
       flash[:alert] = 'ログインしてください。'
+    end
+  end
+
+  def create
+    @item = Item.new(item_params)
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+    respond_to do |format|
+      if @item.save
+          params[:photos][:image].each do |image|
+            @item.photos.create(image: image, item_id: @item.id)
+          end
+        format.html{redirect_to root_path}
+      else
+        @item.photos.build
+        format.html{render action: 'new'}
+      end
     end
   end
 
@@ -60,6 +78,9 @@ class ItemsController < ApplicationController
   end
 
   def update
+    item = Item.find(params[:id])
+    item.update(item_params)
+
     grandchild_category = @item.category
     child_category = grandchild_category.parent
     @category_parent_array = []
@@ -75,20 +96,7 @@ class ItemsController < ApplicationController
     end
   end
   
-  def create
-    @item = Item.new(item_params)
-    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-    respond_to do |format|
-      if @item.save
-          params[:photos][:image].each do |image|
-            @item.photos.create(image: image, item_id: @item.id)
-          end
-        format.html{redirect_to root_path}
-      else
-        @item.photos.build
-        format.html{render action: 'new'}
-      end
-    end
+  def show
   end
 
   def purchase
@@ -102,10 +110,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
-  end
-  
   def pay
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
@@ -142,6 +146,11 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
+
 end
 
 

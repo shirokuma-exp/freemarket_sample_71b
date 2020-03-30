@@ -2,7 +2,6 @@
   = render "headder"
   
 .body
-  -# - @item.each do |item|
   .itemInformation
     -# ログイン状態かつ自分の商品のみ編集削除できるようにする
     - if user_signed_in? && current_user.id == @item.user_id
@@ -63,7 +62,6 @@
           %tr
             %th 発送元の地域
             %td 
-              -# = link_to '#' do
               = @item.region.name
           %tr
             %th 発送の目安
