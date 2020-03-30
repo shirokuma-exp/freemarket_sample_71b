@@ -49,6 +49,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  # 商品の削除機能
   def destroy
     @item = Item.find(params[:id])
     if @item.destroy
