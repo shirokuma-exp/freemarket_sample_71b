@@ -28,11 +28,11 @@
         .field3
           = f.label :password
           %span 必須
-          - if @minimum_password_length
-            %em
+          -# - if @minimum_password_length
+          -#   %em
               -# (#{@minimum_password_length} characters minimum)
           %br/
-          = f.password_field :password, autocomplete: "new-password", placeholder: "６文字以上のパスワード", class: 'login-input-text'
+          = f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "６文字以上のパスワード", class: 'login-input-text'
 
         .field4
           = f.label :password_confirmation
