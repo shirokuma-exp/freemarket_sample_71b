@@ -49,6 +49,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to root_path, notice: '商品を削除しました'
+    else
+      redirect_to item_path(@item)
+    end
+  end
+
   def update
     grandchild_category = @item.category
     child_category = grandchild_category.parent
