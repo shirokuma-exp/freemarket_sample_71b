@@ -1,0 +1,25 @@
+.wrapper
+  = render "items/headder"
+  .search-box
+    .search-main
+      .search-main__container
+        .search-main__container__head
+          キーワード検索
+        .search-main__container__items-box
+          .search-main__container__items-box__head
+            検索結果
+        .search-main__container__items-box__lists
+          - @search_items.each do |item|
+            .h-main__frame__group__cont__lists__list
+              .h-main__frame__group__cont__lists__list__leaf
+                = link_to item_path(item) do
+                  .h-main__frame__group__cont__lists__list__leaf__pic
+                    - item.photos.each_with_index do |n|
+                      =image_tag n.image.url, size: "188x188"
+                      -break if i=0
+                    .h-main__frame__group__cont__lists__list__leaf__pic__price
+                      = "¥#{item.price}"
+                  .h-main__frame__group__cont__lists__list__leaf__comment
+                    = item.name
+          -# = paginate(@items)
+  = render "items/footer"

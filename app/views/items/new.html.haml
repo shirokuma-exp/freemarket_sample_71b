@@ -1,40 +1,14 @@
-.main 
-  .infoForm
-    .logo
-      =link_to '#' do
-        =image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
-  = form_for [@item], html: {class: "sell-form dropzone", id: "item-dropzone"} do |f|
-    .sell-form-container
-      .sell-form-container__label
-        出品画像 
-        %span.sell-form-container__require
-          必須
-          = f.fields_for :photos do |image|
-            .dropzone-container.clearfix
-              #preview
-              .dropzone-area
-                = image.label :image, class: "dropzone-box", for: "upload-image" do
-                  .input_area
-                    = image.file_field :image, multiple: true, name: 'photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                  %p ここをクリックしてください
-                  %label.label
-                    = fa_icon 'camera'
+= form_for [@item] do |f|
+  .main
+    .infoForm
+      .logo
+        =link_to root_path do
+          =image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
 
-              #preview2
-              .dropzone-area
-                = image.label :image, class: "dropzone-box", for: "upload-image" do
-                  .input_area
-                    = image.file_field :image, multiple: true, name: 'photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                  %p ここをクリックしてください
-                  -# %label.label
-                  -#   = fa_icon 'camera'
+      .exhibitionBox
 
-      
-
-
-      .itemStatus
-        .user
-          ユーザーID
+        .exhibitionImage
+          出品画像 
           %span
             必須
           .exhibitionImageForm
@@ -76,17 +50,12 @@
 
 
 
-        .itemStatus
-          .user
-            ユーザーID
-            %span
-              必須
-            = f.text_field :user_id, :value => @user, placeholder: ""
 
-        .itemStatus
-          .user
+            -# ユーザーID
+              -# 必須
+            = f.hidden_field :user_id, :value => @user, placeholder: ""
+
             -# 商品のステータス
-            %span
             = f.hidden_field :status, :value => "1", placeholder: ""
  
         .itemStatus
@@ -127,41 +96,7 @@
             サイズ
             %span
               必須
-            = f.text_field :size, placeholder: "M"
-
-      .itemStatus
-        .name
-          商品名
-          %span
-            必須
-          = f.text_field :name, placeholder: "〜文字まで"
-        .description
-          商品説明
-          %span
-            必須
-          = f.text_area :description, autofocus: true, placeholder: "商品の説明"
-        
-      .detail
-        商品の詳細
-        .category
-          .listing-product-detail__category
-            = f.label 'カテゴリー', class: 'listing-default__label'
-            %span.listing-default--require 必須
-            .listing-select-wrapper
-              .listing-select-wrapper__box
-                .category__form
-                  = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-
-        .brand
-          ブランド
-          %span
-            任意
-          = f.text_field :brand_id, placeholder: "例）ベルサーチ"
-        .condition
-          商品の状態
-          %span
-            必須
-          = f.collection_select :condition_id, Condition.all, :id, :name, prompt: "選択してください", class: 'input'
+            = f.select :size, [["S", "S"], ["M", "M"], ["L", "L"], ["XL", "XL"]], include_blank: "選択してください"
 
         .size
           サイズ

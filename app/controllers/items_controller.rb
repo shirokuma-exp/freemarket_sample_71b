@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_card,only: [:purchase, :pay]
   before_action :set_item,only: [:purchase, :pay]
+  before_action :set_search
 
   def index
     @items = Item.all.page(params[:page]).order("created_at DESC").per(10)
@@ -9,12 +10,15 @@ class ItemsController < ApplicationController
   end
   
   def new
-    @item = Item.new
-    @user = current_user.id
-    @item.photos.build
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
+    if user_signed_in?
+      @item = Item.new
+      @user = current_user.id
+      @item.photos.build
+        @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+        @category_parent_array.unshift("---")
+    else
+      redirect_to root_path
+      flash[:alert] = 'ログインしてください。'
     end
   end
 
@@ -43,6 +47,16 @@ class ItemsController < ApplicationController
     @category_grandchildren_array = []
     Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
       @category_grandchildren_array << grandchildren
+    end
+  end
+
+  # 商品の削除機能
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to root_path, notice: '商品を削除しました'
+    else
+      redirect_to item_path(@item)
     end
   end
 
@@ -112,6 +126,14 @@ class ItemsController < ApplicationController
   def done
   end
 
+  def search
+  end
+
+  def set_search
+    @search = Item.ransack(params[:q]) 
+    @search_items = @search.result(distinct: true)
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :brand_name, :condition_id, :size, :delivery_charge_id, :delivery_way_id, :region_id, :shipping_period_id, :price, :status, item_images_attributes: [:image]).merge(user_id: current_user.id)
@@ -125,6 +147,5 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 end
-
 
 

@@ -46,6 +46,8 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'faker'
 end
 
 group :development do
@@ -86,7 +88,6 @@ gem 'json'
 gem 'gretel'
 gem 'gon'
 gem 'fog-aws'
-
 gem 'pry-rails'
 gem 'dotenv-rails'
 gem 'gretel'
