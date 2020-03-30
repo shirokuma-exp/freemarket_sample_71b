@@ -1,6 +1,8 @@
 .new_user {
   margin: 0 auto;
   padding: 24px 16px 40px;
+  align-items: center;
+  text-align: center;
 }
 
 .single{
@@ -9,24 +11,6 @@
   justify-content: center;
   align-items: center;
   text-align:center;
-}
-
-.mercari{
-  width: 185px;
-  height: 49px;
-}
-
-.class{
-  padding: 24px 64px 32px;
-}
-.field{
-  background-color: white;
-  width: 100%;
-}
-
-.button{
-  background-color: blue;
-  color: #fff;
 }
 
 .header {
@@ -41,6 +25,14 @@
     font-size: 15px;
 
   }
+}
+
+h5 {
+  font-size: 22px;
+  padding-bottom: 40px;
+  font-weight: 600;
+  align-items: center;
+  text-align: center;
 }
 
 .contents {
