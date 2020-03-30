@@ -10,18 +10,18 @@
         = render "devise/shared/error_messages", resource: resource
         .main2
           .field1
-            %label ニックネーム
-            = f.label :nickname
+            %label
+            = f.label :ニックネーム
             %span 必須
             %br/
             = f.text_field :nickname, autofocus: true, placeholder: "例）中森の直也", class: 'login-input-text'
           .field2
-            = f.label :email
+            = f.label :メールアドレス
             %span 必須
             %br/
             = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'login-input-text'
           .field3
-            = f.label :password
+            = f.label :パスワード
             %span 必須
             - if @minimum_password_length
               %em
@@ -29,44 +29,47 @@
             %br/
             = f.password_field :password, autocomplete: "new-password", placeholder: "６文字以上のパスワード", class: 'login-input-text'
           .field4
-            = f.label :password_confirmation
+            = f.label :パスワードの確認
             %span 必須
             %br/
             = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "６文字以上のパスワード", class: 'login-input-text'
           .field5
-            %label 名前
-            = f.label :name
+            %label 
+            = f.label :名前
             %span 必須
             %br/
             = f.text_field :name, autofocus: true, placeholder: "例）中森 直也", class: 'login-input-text'
-  
+
           .field6
-            %label 名前かな
-            = f.label :name_kana
+            %label 
+            = f.label :名前かな
             %span 必須
             %br/
             = f.text_field :name_kana, autofocus: true, placeholder: "例）なかもり なおや", class: 'login-input-text'
           .field7
-            %label 誕生日
-            = f.label :birthday
+            %label 
+            = f.label :誕生日
             %span 必須
             %br/
             = f.date_field  :birthday, autofocus: true, class: 'login-input-text'
           .field8
-            %label 電話番号
-            = f.label :phone_number
+            %label 
+            = f.label :電話番号
             %span 必須
             %br/
             = f.telephone_field  :phone_number, autofocus: true, class: 'login-input-text'
           .field9
-            %label 性別
-            = f.radio_button :sex, "男" 
-            男
-            = f.radio_button :sex, "女"
-            女
+            %label 
+            = f.label :性別
             %span 必須
             %br/
-  
+            .gender
+              = f.radio_button :sex, "男" 
+              男
+              = f.radio_button :sex, "女"
+              女
+            %br/
+
           .field-text
             ※ 本人情報は正しく入力してください。会員登録後、修正するのにはお時間をいただく場合がございます。
           .actions
