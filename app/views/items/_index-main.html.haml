@@ -21,5 +21,12 @@
                     .h-main__frame__group__cont__lists__list__leaf__pic__price
                       = "¥#{item.price}"
                   .h-main__frame__group__cont__lists__list__leaf__comment
-                    = item.name
+                    .h-main__frame__group__cont__lists__list__leaf__comment__itemname
+                      = item.name
+                    .h-main__frame__group__cont__lists__list__leaf__comment__soldout
+                      - if user_signed_in? && current_user.id == item.user_id
+          
+                      - else 
+                        - unless item.status == 1
+                          %p SOLD OUT
           = paginate(@items)
