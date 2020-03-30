@@ -5,10 +5,11 @@
         .h-header__extra__frame__upper__logo
           =link_to image_tag('http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg', size: "140x40"), root_path
         .h-header__extra__frame__upper__search
-          .h-header__extra__frame__upper__search__box
-            %input{:placeholder => "キーワードから探す", :type => 'text'}
-          .h-header__extra__frame__upper__search__faicon
-            =link_to image_tag('http://furima.tokyo/assets/icon-search-60a83ada85216fe00789cd16065281694d9a08948275fef83683fadcf131d84d.svg', size: "20x20"), '#'
+          = search_form_for @search, url: search_items_path do |f|
+            = f.text_field :name_cont , placeholder: "キーワードから探す", class: 'h-header__extra__frame__upper__search__box'
+            = button_tag type: 'submit', class: 'search__button' do
+              .h-header__extra__frame__upper__search__faicon
+                = image_tag('http://furima.tokyo/assets/icon-search-60a83ada85216fe00789cd16065281694d9a08948275fef83683fadcf131d84d.svg', size: "20x20")
       .h-header__extra__frame__lower
         .h-header__extra__frame__lower__left
           .h-header__extra__frame__lower__left__category

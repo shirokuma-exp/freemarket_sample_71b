@@ -88,7 +88,6 @@ gem 'json'
 gem 'gretel'
 gem 'gon'
 gem 'fog-aws'
-
 gem 'pry-rails'
 gem 'dotenv-rails'
 gem 'gretel'

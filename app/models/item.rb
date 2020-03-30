@@ -17,4 +17,5 @@ class Item < ApplicationRecord
   # belongs_to :brand
   has_many :comments
   accepts_nested_attributes_for :photos
+  scope :searches, -> (search){where('name LIKE(?)', "%#{search}%")}
 end

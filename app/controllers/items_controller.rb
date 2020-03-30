@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_card,only: [:purchase, :pay]
   before_action :set_item,only: [:purchase, :pay]
+  before_action :set_search
 
   def index
     @items = Item.all.page(params[:page]).order("created_at DESC").per(10)
@@ -109,6 +110,14 @@ class ItemsController < ApplicationController
   end
 
   def done
+  end
+
+  def search
+  end
+
+  def set_search
+    @search = Item.ransack(params[:q]) 
+    @search_items = @search.result(distinct: true)
   end
 
   private
