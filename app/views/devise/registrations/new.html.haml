@@ -1,81 +1,77 @@
-!!!
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title FreemarketSample71b
-    = csrf_meta_tags
-    = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    %header
-      %h2 会員情報入力
+%body
+  .single
+    .single__header
+      =link_to image_tag('http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg', size: "140x40"), root_path
+    .single__progress
+  %header
+    .main1
+      %h5 会員情報入力
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
-        .field1
-          %label ニックネーム
-          = f.label :nickname
-          %span 必須
-          %br/
-          = f.text_field :nickname, autofocus: true, placeholder: "例）中森の直也", class: 'login-input-text'
+        .main2
+          .field1
+            %label
+            = f.label :ニックネーム
+            %span 必須
+            %br/
+            = f.text_field :nickname, autofocus: true, placeholder: "例）中森の直也", class: 'login-input-text'
+          .field2
+            = f.label :メールアドレス
+            %span 必須
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'login-input-text'
+          .field3
+            = f.label :パスワード
+            %span 必須
+            - if @minimum_password_length
+              %em
+                -# (#{@minimum_password_length} characters minimum)
+            %br/
+            = f.password_field :password, autocomplete: "new-password", placeholder: "６文字以上のパスワード", class: 'login-input-text'
+          .field4
+            = f.label :パスワードの確認
+            %span 必須
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "６文字以上のパスワード", class: 'login-input-text'
+          .field5
+            %label 
+            = f.label :名前
+            %span 必須
+            %br/
+            = f.text_field :name, autofocus: true, placeholder: "例）中森 直也", class: 'login-input-text'
 
-        .field2
-          = f.label :email
-          %span 必須
-          %br/
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'login-input-text'
+          .field6
+            %label 
+            = f.label :名前かな
+            %span 必須
+            %br/
+            = f.text_field :name_kana, autofocus: true, placeholder: "例）なかもり なおや", class: 'login-input-text'
+          .field7
+            %label 
+            = f.label :誕生日
+            %span 必須
+            %br/
+            = f.date_field  :birthday, autofocus: true, class: 'login-input-text'
+          .field8
+            %label 
+            = f.label :電話番号
+            %span 必須
+            %br/
+            = f.telephone_field  :phone_number, autofocus: true, class: 'login-input-text'
+          .field9
+            %label 
+            = f.label :性別
+            %span 必須
+            %br/
+            .gender
+              = f.radio_button :sex, "男" 
+              男
+              = f.radio_button :sex, "女"
+              女
+            %br/
 
-        .field3
-          = f.label :password
-          %span 必須
-          - if @minimum_password_length
-            %em
-              -# (#{@minimum_password_length} characters minimum)
-          %br/
-          = f.password_field :password, autocomplete: "new-password", placeholder: "６文字以上のパスワード", class: 'login-input-text'
-
-        .field4
-          = f.label :password_confirmation
-          %span 必須
-          %br/
-          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "６文字以上のパスワード", class: 'login-input-text'
-
-        .field5
-          %label 名前
-          = f.label :name
-          %span 必須
-          %br/
-          = f.text_field :name, autofocus: true, placeholder: "例）中森 直也", class: 'login-input-text'
-      
-        .field6
-          %label 名前かな
-          = f.label :name_kana
-          %span 必須
-          %br/
-          = f.text_field :name_kana, autofocus: true, placeholder: "例）なかもり なおや", class: 'login-input-text'
-
-        .field7
-          %label 誕生日
-          = f.label :birthday
-          %span 必須
-          %br/
-          = f.date_field  :birthday, autofocus: true, class: 'login-input-text'
-
-        .field8
-          %label 電話番号
-          = f.label :phone_number
-          %span 必須
-          %br/
-          = f.telephone_field  :phone_number, autofocus: true, class: 'login-input-text'
-
-        .field9
-          %label 性別
-          = f.label :sex
-          %span 必須
-          %br/
-          = f.text_field  :sex, autofocus: true, class: 'login-input-text'
-        .field-text
-          ※ 本人情報は正しく入力してください。会員登録後、修正するのにはお時間をいただく場合がございます。
-        .actions
-          = f.submit "次へ進む", class: 'submit'
-      = render "devise/shared/links"
+          .field-text
+            ※ 本人情報は正しく入力してください。会員登録後、修正するのにはお時間をいただく場合がございます。
+          .actions
+            = f.submit "次へ進む", class: 'submit'
+        = render "devise/shared/links"
