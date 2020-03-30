@@ -50,17 +50,12 @@
 
 
 
-        .itemStatus
-          .user
-            ユーザーID
-            %span
-              必須
-            = f.text_field :user_id, :value => @user, placeholder: ""
 
-        .itemStatus
-          .user
+            -# ユーザーID
+              -# 必須
+            = f.hidden_field :user_id, :value => @user, placeholder: ""
+
             -# 商品のステータス
-            %span
             = f.hidden_field :status, :value => "1", placeholder: ""
  
         .itemStatus
