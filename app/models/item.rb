@@ -7,11 +7,15 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :region
 
-  
+  validates :name, :description, :condition_id, :size, :delivery_charge_id, :delivery_way_id, :shipping_period_id, :price, :region_id, :user_id, :category_id, presence: true
+  # belongs_to :buyer, class_name: "User"
   belongs_to :user
   has_many :photos
   belongs_to :category, optional: true
-    validates :category, presence: { message: 'カテゴリーを選択してください' }
+    # validates :category, presence: { message: 'カテゴリーを選択してください' }
+
+  # belongs_to :brand
   has_many :comments
   accepts_nested_attributes_for :photos
+  scope :searches, -> (search){where('name LIKE(?)', "%#{search}%")}
 end

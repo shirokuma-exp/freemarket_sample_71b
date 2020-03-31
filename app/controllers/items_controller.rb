@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_card,only: [:purchase, :pay]
   before_action :set_item,only: [:edit, :show, :purchase, :pay]
   before_action :move_to_index, except: [:index, :show]
-
+  before_action :set_search
 
   def index
     @items = Item.all.page(params[:page]).order("created_at DESC").per(10)
@@ -11,11 +11,16 @@ class ItemsController < ApplicationController
   end
   
   def new
-    @item = Item.new
-    @user = current_user.id
-    @item.photos.build
-      @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-      @category_parent_array.unshift("---")
+    if user_signed_in?
+      @item = Item.new
+      @user = current_user.id
+      @item.photos.new
+        @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+        @category_parent_array.unshift("---")
+    else
+      redirect_to root_path
+      flash[:alert] = 'ログインしてください。'
+    end
   end
 
   def create
@@ -23,13 +28,14 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)
     respond_to do |format|
       if @item.save
-          params[:photos][:image].each do |image|
-            @item.photos.create(image: image, item_id: @item.id)
-          end
+        params[:photos][:image].each do |image|
+        @item.photos.create(image: image, item_id: @item.id)
+        end
         format.html{redirect_to root_path}
+        format.json
       else
         @item.photos.build
-        format.html{render action: 'new'}
+        format.html{redirect_to new_item_path(@item), notice: '入力項目が不足しています'}
       end
     end
   end
@@ -50,6 +56,7 @@ class ItemsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
+
     @category_children_array = []
     Category.where(ancestry: child_category.ancestry).each do |children|
       @category_children_array << children
@@ -58,6 +65,15 @@ class ItemsController < ApplicationController
     @category_grandchildren_array = []
     Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
       @category_grandchildren_array << grandchildren
+    end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to root_path, notice: '商品を削除しました'
+    else
+      redirect_to item_path(@item)
     end
   end
 
@@ -78,6 +94,8 @@ class ItemsController < ApplicationController
     else 
       render :edit
     end
+    
+    @item.photos.new
   end
   
   def show
@@ -110,9 +128,17 @@ class ItemsController < ApplicationController
   def done
   end
 
+  def search
+  end
+
+  def set_search
+    @search = Item.ransack(params[:q]) 
+    @search_items = @search.result(distinct: true)
+  end
+
   private
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :brand_name, :condition_id, :size, :delivery_charge_id, :delivery_way_id, :region_id, :shipping_period_id, :price, :status, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :category_id, :brand_name, :condition_id, :size, :delivery_charge_id, :delivery_way_id, :region_id, :shipping_period_id, :price, :status, item_photos_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def set_card
@@ -128,6 +154,5 @@ class ItemsController < ApplicationController
   end
 
 end
-
 
 

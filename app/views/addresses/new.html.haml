@@ -19,7 +19,8 @@
             =link_to 'ブランド','#', class:'h-header__extra__frame__lower__left__brand'
       -# 以下豊田編集
     .h-header__extra__pannkuzu
-      カテゴリーから探す（パンくずのgemにて後日編集）
+      - breadcrumb :user_address
+      = render "items/breadcrumbs"
       .h-header__extra__pannkuzu__2
     .h-header__extra__box 
       .h-header__extra__box__2

@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       post 'pay', to:'items#pay'
       get 'done', to:'items#done'
     end
+    collection do
+      get 'search', to: 'items#search'
+    end
   end
 
   resources :users, only: [:edit, :update] do

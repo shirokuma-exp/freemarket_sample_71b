@@ -3,9 +3,10 @@
   
 .body
   .itemInformation
+    -# ログイン状態かつ自分の商品のみ編集削除できるようにする
     - if user_signed_in? && current_user.id == @item.user_id
       .editDestroyLink
-        = link_to '削除', '#'
+        = link_to '削除', item_path(@item), method: :delete
         = link_to '編集', edit_item_path(@item.id)
 
     .item
@@ -36,13 +37,12 @@
               = @item.user.nickname
           %tr
             %th カテゴリー
-            %td
-              = link_to '#' do
-                メンズ
-                %br
-                ジャケット/アウター
-                %br
-                ノーカラージャケット
+            %td.right-lists 
+              = link_to @item.category.root.name,"#" 
+              %br
+              = link_to @item.category.parent.name,"#" 
+              %br
+              = link_to @item.category.name,"#"
           %tr
             %th ブランド
             %td
