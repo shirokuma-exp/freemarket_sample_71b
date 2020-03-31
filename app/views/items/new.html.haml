@@ -1,61 +1,33 @@
-= form_for [@item] do |f|
-  .main
-    .infoForm
-      .logo
-        =link_to root_path do
-          =image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
+.main 
+  .infoForm
+    .logo
+      =link_to '#' do
+        =image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
+  = form_for [@item], html: {class: "sell-form dropzone", id: "item-dropzone"} do |f|
+    .sell-form-container
+      .sell-form-container__label
+        出品画像 
+        %span.sell-form-container__require
+          必須
 
-      .exhibitionBox
+      .imageForm__text
+        %p 最大10枚までアップロードできます。
+      .imageForm__form
+        #image-box
+          #previews
+            - if @item.persisted?
+              - @item.photos.each_with_index do |photo, i|
+                = image_tag photo.src.url, data: { index: i }, width: "100", height: "100"
+          = f.fields_for :photos do |image|
+            .upload-image_group{"data-index" => "#{image.index}"}
+              = image.file_field :image, multiple: true, name: 'photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+              %br
+              .js-remove 削除
 
-        .exhibitionImage
-          出品画像 
-          %span
-            必須
-          .exhibitionImageForm
-            最大３枚までアップロードできます
-            = f.fields_for :photos do |image|
-              .dropzone-container.clearfix
-                #preview1
-                .dropzone-area
-                  = image.label :image, class: "dropzone-box", for: "upload-image" do
-                    .input_area
-                      = image.file_field :image, multiple: true, name: 'photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                    %p ここをクリックしてください
-                #preview2
-                .dropzone-area
-                  = image.label :image, class: "dropzone-box", for: "upload-image" do
-                    .input_area
-                      = image.file_field :image, multiple: true, name: 'photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                    %p ここをクリックしてください
-                #preview3
-                .dropzone-area
-                  = image.label :image, class: "dropzone-box", for: "upload-image" do
-                    .input_area
-                      = image.file_field :image, multiple: true, name: 'photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                    %p ここをクリックしてください
-            %label.label
-              = fa_icon 'camera'
+      
 
-
-
-            -#       .dropzone-area
-            -# = image.label :image, class: "dropzone-box", for: "upload-image" do
-            -#   .input_area
-            -#     = image.file_field :image, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-            -#   %p ここをクリックしてください
-
-
-
-
-
-
-
-
-            -# ユーザーID
-              -# 必須
             = f.hidden_field :user_id, :value => @user, placeholder: ""
 
-            -# 商品のステータス
             = f.hidden_field :status, :value => "1", placeholder: ""
  
         .itemStatus
@@ -80,7 +52,6 @@
                 .listing-select-wrapper__box
                   .category__form
                     = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-
           .brand
             ブランド
             %span
@@ -98,52 +69,45 @@
               必須
             = f.select :size, [["S", "S"], ["M", "M"], ["L", "L"], ["XL", "XL"]], include_blank: "選択してください"
 
-        .delivery
-          配送について
-          .deliveryCharge
-            配送料の負担
-            %span
-              必須
-            = f.collection_select :delivery_charge_id, DeliveryCharge.all, :id, :name, prompt: "選択してください", class: 'input'
-          .deliveryWay
-            配送方法
-            %span
-              必須
-            = f.collection_select :delivery_way_id, DeliveryWay.all, :id, :name, prompt: "選択してください", class: 'input'
 
-          .region
-            発送元の地域
-            %span
-              必須
-            = f.collection_select :region_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
-          .shippingPreiod
-            発送までの日数
-            %span
-              必須
-            = f.collection_select :shipping_period_id, ShippingPeriod.all, :id, :name, prompt: "選択してください", class: 'input'
-
-        .price
-          価格（300〜）
+      .delivery
+        配送について
+        .deliveryCharge
+          配送料の負担
           %span
             必須
-          .itemPrice
-            .sellingPrice
-              販売価格
-            .sellingPriceForm
-              ¥
-              = f.number_field :price, placeholder: "半角数字"
-              
-          -# .commision
-          -#   販売手数料(10%)
-          -# .profit
-          -#   販売利益
+          = f.collection_select :delivery_charge_id, DeliveryCharge.all, :id, :name, prompt: "選択してください", class: 'input'
+        .deliveryWay
+          配送方法
+          %span
+            必須
+          = f.collection_select :delivery_way_id, DeliveryWay.all, :id, :name, prompt: "選択してください", class: 'input'
 
-          -#   つけてもつけなくても
+        .destination
+          発送元の地域
+          %span
+            必須
+          = f.collection_select :region_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
+        .shippingPreiod
+          発送までの日数
+          %span
+            必須
+          = f.collection_select :shipping_period_id, ShippingPeriod.all, :id, :name, prompt: "選択してください", class: 'input'
 
-        .btns
-          .sendBtn
-            = f.submit "出品する", class: "send-btn"
-          .returnBtn
-            = link_to root_path do
-              戻る
-              
+      .price
+        価格（300〜）
+        %span
+          必須
+        .itemPrice
+          .sellingPrice
+            販売価格
+          .sellingPriceForm
+            ¥
+            = f.number_field :price, placeholder: "半角数字"
+            
+      .btns
+        .sendBtn
+          = f.submit "出品する", class: "send-btn"
+        .returnBtn
+          = link_to root_path do
+            戻る
