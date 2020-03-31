@@ -74,8 +74,11 @@
               %span.listing-default--require 必須
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                  .category__form
-                    = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, {class: 'listing-select-wrapper__box--select', id: 'parent_category', name: "category"}
+                .listing-select-wrapper__box
+                  = f.select :category_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'listing-select-wrapper__box--select', id: 'children_wrapper', name: "category"}
+                .listing-select-wrapper__box
+                  = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{},  {class: 'listing-select-wrapper__box--select', id: 'grandchildren_wrapper', name: "category"}
 
           .brand
             ブランド
