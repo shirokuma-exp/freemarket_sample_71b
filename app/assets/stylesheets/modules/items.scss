@@ -340,7 +340,7 @@
   }
 }
 
-.purchase-btn{
+.purchase-btns{
   height: 116px;
   width:120px;
   background-color: #3CCACE;
@@ -349,20 +349,21 @@
   position: fixed;
   right: 25px;
   bottom: 25px;
-
-  &__text{
-    height: 27px;
-    width: 97px;
-    margin-bottom: 5px;
-    font-size: 18px;
-    line-height: 18px;
-    text-align: center;
-    color: white;
-    // background-color: seagreen;
-  }
-  &__box{
-    // background-color: red;
-    padding-left: 17px;
+  .purchase-btn{
+    text-decoration: none;
+    &__text{
+      height: 27px;
+      width: 97px;
+      margin-bottom: 5px;
+      font-size: 18px;
+      line-height: 18px;
+      text-align: center;
+      color: white;
+    }
+    &__box{
+      // background-color: red;
+      padding-left: 17px;
+    }
   }
 }
 
@@ -370,7 +371,7 @@
   @include hoverline;
 }
 
-.purchase-btn:hover {
+.purchase-btns:hover {
   cursor: pointer;
   opacity:0.9;
 }
