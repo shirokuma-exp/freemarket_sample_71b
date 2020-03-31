@@ -30,185 +30,125 @@
     }
     .sell-form-container__label {
       padding: 20px 0;
+    }
 
-      input {
-        height: 100px;
-        width: 100px;
-        border: 1px dashed rgb(204, 204, 204);
-        background-color: rgb(245, 245, 245);
-      }
-      ::placeholder {
-        text-align: center;
-      }
-        .dropzone-container.clearfix{
-          // .img_view{
-          //   img src{
-          //     display: flex;
-          //     justify-content: flex-start;
-          //   }
-          //   .btn_wrapper{
-          //     .btn edit{}
-          //     .btn delete{}
-          //   }
-          // }
-          .dropzone-area{
-            width: 50%;
-            .dropzone-box{
-              width: 100%;
-              .input-area{
-                width: 100%;
-                height: 300px;
-                .upload-image{
-                  width:150px;
-                  height:50px;
-                }
-              }
-            }
+    .imageForm__form {
+      .image-box{
+        height:300px;
+        .input-area{
+          width: 100%;
+          height: 300px;
+          .input-area{
+            width:100px;
+            height:100px;
           }
-        }
+        }       
+      }
+    }
       
-    }
-  }
-  .itemStatus {
-    .name {
-      padding: 20px 0;
-      input {
-        width: 100%;
-        padding: 10px;
-      }
-    }
-    .description {
-      padding: 20px 0;
-      textarea {
-        width: 100%;
-        height: 150px;
-        padding: 10px;
-      }
-    }
-  }
-  .detail {
-    padding: 40px 0;
-    .category {
-      padding: 20px 0;
-      select {
-        width: 100%;
-        height: 50px;
-        padding: 10px;
-      }
-    }
-    .brand {
-      padding: 20px 0;
-      span {
-        background-color: grey;
-        color: white;
-        border: 1px solid grey;
-        border-radius: 6px;
-      }
-      input {
-        width: 100%;
-        padding: 10px;
-        
-      }
-    }
-    .condition {
-      padding: 20px 0;
-      select {
-        width: 100%;
-        height: 50px;
-        padding: 10px;
-      }
-    }
-  }
-  .delivery {
-    .deliveryCharge {
-      padding: 20px 0;
-      select {
-        width: 100%;
-        height: 50px;
-        padding: 10px;
-      }
-
-      .delivery {
-        .deliveryCharge {
-          padding: 20px 0;
-          select {
-            width: 100%;
-            height: 50px;
-            padding: 10px;
-          }
-
-
+  
+  
+    .itemStatus {
+      .name {
+        padding: 20px 0;
+        input {
+          width: 100%;
+          padding: 10px;
         }
-        .deliveryWay {
-          padding: 20px 0;
-          select {
-            width: 100%;
-            height: 50px;
-            padding: 10px;
-          }
-
+      }
+      .description {
+        padding: 20px 0;
+        textarea {
+          width: 100%;
+          height: 150px;
+          padding: 10px;
         }
-        .region {
-          padding: 20px 0;
-          select {
-            width: 100%;
-            height: 50px;
-            padding: 10px;
-          }
-
-
-        }
-        .shippingPreiod {
-          padding: 20px 0;
-          select {
-            width: 100%;
-            height: 50px;
-            padding: 10px;
-          }
-
-        }
-    }
-    .deliveryWay {
-      padding: 20px 0;
-      select {
-        width: 100%;
-        height: 50px;
-        padding: 10px;
       }
     }
-    .destination {
-      padding: 20px 0;
-      select {
-        width: 100%;
-        height: 50px;
-        padding: 10px;
+    .detail {
+      padding: 40px 0;
+      .category {
+        padding: 20px 0;
+        select {
+          width: 100%;
+          height: 50px;
+          padding: 10px;
+        }
+      }
+      .brand {
+        padding: 20px 0;
+        span {
+          background-color: grey;
+          color: white;
+          border: 1px solid grey;
+          border-radius: 6px;
+        }
+        input {
+          width: 100%;
+          padding: 10px;
+          
+        }
+      }
+      .condition {
+        padding: 20px 0;
+        select {
+          width: 100%;
+          height: 50px;
+          padding: 10px;
+        }
       }
     }
-    .shippingPreiod {
-      padding: 20px 0;
-      select {
-        width: 100%;
-        height: 50px;
-        padding: 10px;
+    .delivery {
+      .deliveryCharge {
+        padding: 20px 0;
+        select {
+          width: 100%;
+          height: 100px;
+          padding: 10px;
+        }
+      }
+      .deliveryWay {
+        padding: 20px 0;
+        select {
+          width: 100%;
+          height: 100px;
+          padding: 10px;
+        }
+      }
+      .destination {
+        padding: 20px 0;
+        select {
+          width: 100%;
+          height: 100px;
+          padding: 10px;
+        }
+      }
+      .shippingPreiod {
+        padding: 20px 0;
+        select {
+          width: 100%;
+          height: 100px;
+          padding: 10px;
+        }
       }
     }
-  }
-  .price {
-    padding: 40px 0;
+    .price {
+      padding: 40px 0;
 
-    .itemPrice {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 0;
-
-
-      .sellingPrice {
+      .itemPrice {
+        display: flex;
+        justify-content: space-between;
         padding: 20px 0;
 
-      }
 
-      .btns {
-        text-align: center;
+        .sellingPrice {
+          padding: 20px 0;
+
+        }
+      }
+    }  
+    .btns {
+          text-align: center;
         .sendBtn {
           padding: 40px 0;
 
@@ -221,45 +161,46 @@
             border-radius: 10px;
             cursor: pointer;
           }
-      .sellingPriceForm {
+        }
+        .sellingPriceForm {
+          padding: 20px 0;
+          input {
+          width: 250px;
+          height: 50px;
+          padding: 10px;
+          }
+        }
+
+      .connision {
         padding: 20px 0;
+
+      }
+      .profit {
+        padding: 20px 0;
+
+      }
+    }
+    .btns {
+      text-align: center;
+      .sendBtn {
+        padding: 40px 0;
+
         input {
-        width: 250px;
-        height: 50px;
-        padding: 10px;
+          text-decoration: none;
+          color: #ffffff;
+          background-color: red;
+          width: 300px;
+          height: 50px;
+          border-radius: 10px;
+        }
+      }
+      .returnBtn {
+        padding: 20px 0;
+        a {
+          color: #3CAACE;
+          text-decoration: none;
         }
       }
     }
-    .connision {
-      padding: 20px 0;
-
-    }
-    .profit {
-      padding: 20px 0;
-
-    }
   }
-  .btns {
-    text-align: center;
-    .sendBtn {
-      padding: 40px 0;
-
-      input {
-        text-decoration: none;
-        color: #ffffff;
-        background-color: red;
-        width: 300px;
-        height: 50px;
-        border-radius: 10px;
-      }
-    }
-    .returnBtn {
-      padding: 20px 0;
-      a {
-        color: #3CAACE;
-        text-decoration: none;
-      }
-    }
-  }
-
 }

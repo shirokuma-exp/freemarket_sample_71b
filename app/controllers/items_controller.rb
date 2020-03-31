@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     if user_signed_in?
       @item = Item.new
       @user = current_user.id
-      @item.photos.build
+      @item.photos.new
         @category_parent_array = Category.where(ancestry: nil).pluck(:name)
         @category_parent_array.unshift("---")
     else
@@ -50,7 +50,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # 商品の削除機能
   def destroy
     @item = Item.find(params[:id])
     if @item.destroy
@@ -83,9 +82,9 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)
     respond_to do |format|
       if @item.save
-          params[:photos][:image].each do |image|
-            @item.photos.create(image: image, item_id: @item.id)
-          end
+        params[:photos][:image].each do |image|
+        @item.photos.create(image: image, item_id: @item.id)
+        end
         format.html{redirect_to root_path}
         format.json
       else
@@ -136,7 +135,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :brand_name, :condition_id, :size, :delivery_charge_id, :delivery_way_id, :region_id, :shipping_period_id, :price, :status, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :category_id, :brand_name, :condition_id, :size, :delivery_charge_id, :delivery_way_id, :region_id, :shipping_period_id, :price, :status, item_photos_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def set_card
