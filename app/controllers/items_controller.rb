@@ -89,7 +89,7 @@ class ItemsController < ApplicationController
         format.json
       else
         @item.photos.build
-        format.html{render action: 'new'}
+        format.html{redirect_to new_item_path(@item), notice: '入力項目が不足しています'}
       end
     end
   end

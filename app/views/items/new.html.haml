@@ -24,10 +24,7 @@
               %br
               .js-remove 削除
 
-          - if @item.persisted?
-            .upload-image_group{"data-index" => "#{@item.photos.count}"}
-              = file_field_tag :image, name: "item[photos_attributes][#{@item.photos.count}][image]", class: 'upload-image'
-              .js-remove 削除
+      
 
             = f.hidden_field :user_id, :value => @user, placeholder: ""
 
