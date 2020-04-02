@@ -2,13 +2,13 @@
   = render "headder"
   
 .body
-  -# - @item.each do |item|
   .itemInformation
     -# ログイン状態かつ自分の商品のみ編集削除できるようにする
     - if user_signed_in? && current_user.id == @item.user_id
       .editDestroyLink
         = link_to '削除', item_path(@item), method: :delete
         = link_to '編集', edit_item_path(@item.id)
+        
 
     .item
       .item__name
@@ -61,9 +61,12 @@
             %td 
               = @item.delivery_charge.name
           %tr
+            %th 配送方法
+            %td 
+              = @item.delivery_way.name
+          %tr
             %th 発送元の地域
             %td 
-              -# = link_to '#' do
               = @item.region.name
           %tr
             %th 発送の目安
@@ -79,14 +82,15 @@
           = link_to '#' do
             = fa_icon 'flag'
             不適切な商品の通報
-
-      - if user_signed_in? && current_user.id == @item.user_id
         
-      - else 
-        - if @item.status == 1
-          = link_to "購入画面に進む", purchase_item_path, class: "purchase-select" 
-        - else
-          .purchase__sold-out SOLD OUT
+      .ToPurchasePageBtn
+        - if user_signed_in? && current_user.id == @item.user_id
+          
+        - else 
+          - if @item.status == 1
+            = link_to "購入画面に進む", purchase_item_path
+          - else
+            .purchase__sold-out SOLD OUT
 
   .commentBox
     .commentForm

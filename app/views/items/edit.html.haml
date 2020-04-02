@@ -19,7 +19,7 @@
               - @item.photos.each_with_index do |photo, i|
                 = image_tag photo.image.url, data: { index: i }, width: "100", height: "100"
           = f.fields_for :photos do |image|
-            .upload-image_group{data:{index: image.index}}
+            .upload-image_group{data: {index: image.index}}
               = image.file_field :image, class: "upload-image"
               %br
               .js-remove 削除
@@ -55,8 +55,12 @@
               %span.listing-default--require 必須
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                  .category__form
-                    = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, {class: 'listing-select-wrapper__box--select', id: 'parent_category', name: "category"}
+                .listing-select-wrapper__box
+                  = f.select :category_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'listing-select-wrapper__box--select', id: 'children_wrapper', name: "category"}
+                .listing-select-wrapper__box
+                  = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{},  {class: 'listing-select-wrapper__box--select', id: 'grandchildren_wrapper', name: "category"}
+
           .brand
             ブランド
             %span
@@ -97,7 +101,7 @@
           発送までの日数
           %span
             必須
-          = f.collection_select :shipping_period_id, ShippingPeriod.all, :id, :name, prompt: "選択してください", class: 'input', required: true
+          = f.collection_select :shipping_period_id, ShippingPeriod.all, :id, :name, prompt: "選択してください", class: 'input'
 
       .price
         価格
@@ -112,7 +116,7 @@
             
       .btns
         .sendBtn
-          = f.submit "出品する", class: "send-btn"
+          = f.submit "更新する", class: "send-btn"
         .returnBtn
           = link_to root_path do
             戻る
