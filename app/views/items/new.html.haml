@@ -19,7 +19,7 @@
               - @item.photos.each_with_index do |photo, i|
                 = image_tag photo.image.url, data: { index: i }, width: "100", height: "100"
           = f.fields_for :photos do |image|
-            .upload-image_group{"data-index" => "#{image.index}"}
+            .upload-image_group{data:{index: image.index}}
               = image.file_field :image, class: "upload-image"
               %br
               .js-remove 削除
@@ -28,12 +28,12 @@
               = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
 
           - if @item.persisted?
-            .upload-image_group{"data-index" => "#{@item.photos.count}"}
+            .upload-image_group{data: {index: @item.photos.count}}
               = file_field_tag :image, name: "item[photos_attributes][#{@item.photos.count}][image]", class: 'upload-image'
               .js-remove 削除
 
-            = f.hidden_field :user_id, :value => @user, placeholder: ""
-            = f.hidden_field :status, :value => "1", placeholder: ""
+            = f.hidden_field :user_id, value: @user, placeholder: ""
+            = f.hidden_field :status, value: "1", placeholder: ""
  
         .itemStatus
           .name

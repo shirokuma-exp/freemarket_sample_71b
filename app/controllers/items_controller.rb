@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_card,only: [:purchase, :pay]
-  before_action :set_item,only: [:edit, :show, :update,:purchase, :pay]
+  before_action :set_item,only: [:edit, :show, :update, :destroy, :purchase, :pay]
   before_action :move_to_index, except: [:index, :show]
   before_action :set_search
 
@@ -69,8 +69,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params)
-
     grandchild_category = @item.category
     child_category = grandchild_category.parent
     @category_parent_array = []
@@ -79,7 +77,7 @@ class ItemsController < ApplicationController
     @category_children_array = Category.where(ancestry: child_category.ancestry)
     @category_grandchildren_array = []
     @category_grandchildren_array  = Category.where(ancestry: grandchild_category.ancestry)
-    if @item.save
+    if @item.update(item_params)
       redirect_to item_path(@item)
       flash[:notice] = "商品の情報を更新しました"
     else 
@@ -87,11 +85,9 @@ class ItemsController < ApplicationController
       flash[:notice] = "情報の更新に失敗しました"
     end
     
-    @item.photos.new
   end
 
   def destroy
-    @item = Item.find(params[:id])
     if @item.destroy
       redirect_to root_path, notice: '商品を削除しました'
     else

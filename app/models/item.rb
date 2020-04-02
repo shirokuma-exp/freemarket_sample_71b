@@ -13,8 +13,8 @@ class Item < ApplicationRecord
   # belongs_to :buyer, class_name: "User"
   belongs_to :user
   has_many :photos
-  belongs_to :category, optional: true
-    # validates :category, presence: { message: 'カテゴリーを選択してください' }
+  belongs_to :category
+  validates :category, presence: { message: 'カテゴリーを選択してください' }
 
   # belongs_to :brand
   has_many :comments
