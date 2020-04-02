@@ -7,20 +7,19 @@
   background-color: #eee;
   padding-top: 40px;
   
-  .editDestroyLink {
-    text-align: end;
-
-    a{
-      padding: 10px;
-      text-decoration: none;
-      color: #3CCACE;
-    }
-  }
-
   .itemInformation {
     width: 700px;
     margin: 0 auto;
     background-color: #fff;
+
+    .editDestroyLink {
+      text-align: end;
+      a{
+        padding: 10px;
+        text-decoration: none;
+        color: #3CCACE;
+      }
+    }
 
     .item {
       padding: 20px 40px 40px;
@@ -139,16 +138,17 @@
   .ToPurchasePageBtn {
     padding-top: 40px;
     text-align: center;
-
-
-    input {
+    a {
+      display: inline-block;
       text-decoration: none;
       color: #ffffff;
-      background-color: red;
       width: 300px;
       height: 50px;
       border-radius: 10px;
       cursor: pointer;
+      line-height: 50px;
+      background-color: #3CCACE;
+      font-size: 20px;
     }
   }
 

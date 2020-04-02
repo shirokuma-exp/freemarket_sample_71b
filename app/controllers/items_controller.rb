@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_card,only: [:purchase, :pay]
-  before_action :set_item,only: [:edit, :show, :purchase, :pay]
+  before_action :set_item,only: [:edit, :show, :update,:purchase, :pay]
   before_action :move_to_index, except: [:index, :show]
   before_action :set_search
 
   def index
-    @items = Item.all.page(params[:page]).order("created_at DESC").per(10)
+    @items = Item.includes(:photos).page(params[:page]).order("created_at DESC").per(10)
     @photos = Photo.all
   end
   
@@ -68,18 +68,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy
-    @item = Item.find(params[:id])
-    if @item.destroy
-      redirect_to root_path, notice: '商品を削除しました'
-    else
-      redirect_to item_path(@item)
-    end
-  end
-
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
+    @item.update(item_params)
 
     grandchild_category = @item.category
     child_category = grandchild_category.parent
@@ -89,13 +79,24 @@ class ItemsController < ApplicationController
     @category_children_array = Category.where(ancestry: child_category.ancestry)
     @category_grandchildren_array = []
     @category_grandchildren_array  = Category.where(ancestry: grandchild_category.ancestry)
-    if @item.update(item_params)
+    if @item.save
       redirect_to item_path(@item)
+      flash[:notice] = "商品の情報を更新しました"
     else 
       render :edit
+      flash[:notice] = "情報の更新に失敗しました"
     end
     
     @item.photos.new
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to root_path, notice: '商品を削除しました'
+    else
+      redirect_to item_path(@item)
+    end
   end
   
   def show
@@ -138,7 +139,9 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :brand_name, :condition_id, :size, :delivery_charge_id, :delivery_way_id, :region_id, :shipping_period_id, :price, :status, item_photos_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :category_id, :brand_name, :condition_id, :size,
+                                 :delivery_charge_id, :delivery_way_id, :region_id, :shipping_period_id,
+                                 :price, :status, photos_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_card

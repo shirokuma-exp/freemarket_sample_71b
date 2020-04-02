@@ -7,7 +7,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :region
 
+  validates_associated :photos
   validates :name, :description, :condition_id, :size, :delivery_charge_id, :delivery_way_id, :shipping_period_id, :price, :region_id, :user_id, :category_id, presence: true
+  validates :photos, presence: true
   # belongs_to :buyer, class_name: "User"
   belongs_to :user
   has_many :photos
@@ -16,6 +18,6 @@ class Item < ApplicationRecord
 
   # belongs_to :brand
   has_many :comments
-  accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :photos, allow_destroy: true
   scope :searches, -> (search){where('name LIKE(?)', "%#{search}%")}
 end

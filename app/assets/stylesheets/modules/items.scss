@@ -10,7 +10,7 @@
     height: 100%;
     width: 100%;
     &__frame{
-      margin: 0, 20px;
+      background-color: white;
       padding-top: 15px;
       &__upper{
         height: 50px;
@@ -159,6 +159,9 @@
           display: flex;
           flex-wrap: wrap;
           justify-content: flex-start;
+          a {
+            text-decoration: none;
+          }
           &__list{
             width: 208px;
             height: 272px;
@@ -196,7 +199,6 @@
                 &__itemname{
                 font-size: 1.1em;
                 color: #000000;
-                text-decoration: none;
                 display: block;
                 }
                 &__soldout{
@@ -349,6 +351,13 @@
   position: fixed;
   right: 25px;
   bottom: 25px;
+  a {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+
+  }
 
   &__text{
     height: 27px;
@@ -358,10 +367,8 @@
     line-height: 18px;
     text-align: center;
     color: white;
-    // background-color: seagreen;
   }
   &__box{
-    // background-color: red;
     padding-left: 17px;
   }
 }

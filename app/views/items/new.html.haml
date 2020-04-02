@@ -10,24 +10,29 @@
         %span.sell-form-container__require
           必須
 
-      .imageForm__text
-        %p 最大10枚までアップロードできます。
+      -# .imageForm__text
+      -#   %p 最大10枚までアップロードできます。
       .imageForm__form
         #image-box
           #previews
             - if @item.persisted?
               - @item.photos.each_with_index do |photo, i|
-                = image_tag photo.src.url, data: { index: i }, width: "100", height: "100"
+                = image_tag photo.image.url, data: { index: i }, width: "100", height: "100"
           = f.fields_for :photos do |image|
             .upload-image_group{"data-index" => "#{image.index}"}
-              = image.file_field :image, multiple: true, name: 'photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+              = image.file_field :image, class: "upload-image"
               %br
               .js-remove 削除
 
-      
+            - if @item.persisted?
+              = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+
+          - if @item.persisted?
+            .upload-image_group{"data-index" => "#{@item.photos.count}"}
+              = file_field_tag :image, name: "item[photos_attributes][#{@item.photos.count}][image]", class: 'upload-image'
+              .js-remove 削除
 
             = f.hidden_field :user_id, :value => @user, placeholder: ""
-
             = f.hidden_field :status, :value => "1", placeholder: ""
  
         .itemStatus
@@ -35,7 +40,7 @@
             商品名
             %span
               必須
-            = f.text_field :name, placeholder: "〜文字まで"
+            = f.text_field :name, placeholder: ""
           .description
             商品説明
             %span
@@ -92,10 +97,10 @@
           発送までの日数
           %span
             必須
-          = f.collection_select :shipping_period_id, ShippingPeriod.all, :id, :name, prompt: "選択してください", class: 'input'
+          = f.collection_select :shipping_period_id, ShippingPeriod.all, :id, :name, prompt: "選択してください", class: 'input', required: true
 
       .price
-        価格（300〜）
+        価格
         %span
           必須
         .itemPrice

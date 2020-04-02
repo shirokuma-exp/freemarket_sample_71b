@@ -1,9 +1,9 @@
 $(document).on('turbolinks:load', ()=> {
-  const buildFileField = (index)=> {
-    const html = `<div data-index="${index}" class="upload-image_group">
+  const buildFileField = (num)=> {
+    const html = `<div data-index="${num}" class="upload-image_group">
                     <input class="upload-image" type="file"
                     name="photos[image][]"
-                    id="photos_image_attributes_${index}_image"><br>
+                    id="photos_image_attributes_${num}_image"><br>
                     <div class="js-remove">削除</div>
                   </div>`;
     return html;
@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', ()=> {
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      img.setAttribute('image', blobUrl);
+      img.setAttribute('src', blobUrl);
     } else {
       $('#previews').append(buildImg(targetIndex, blobUrl));
       $('#image-box').append(buildFileField(fileIndex[0]));
