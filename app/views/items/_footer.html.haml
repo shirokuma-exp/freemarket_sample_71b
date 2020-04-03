@@ -49,9 +49,32 @@
       ©︎FURIMA
   -# ログインしていればクリックすると購入画面に遷移する
   -# ログインしていなければクリックするとトップページに遷移する
-  .purchase-btns
-    =link_to new_item_path, class:"purchase-btn" do
-      %p.purchase-btn__text
-        出品する
-      %p.purchase-btn__box
-        =link_to image_tag('http://furima.tokyo/assets/icon_camera-968c5ebaa05319bf1e2ad7508f852dd712504a4d26a1930d8bd87ec03ebcc37a.svg', size: "54x54")
+
+  .purchase-btns  
+    =link_to new_item_path, class:"purchase-btns" do
+      .purchase-btns__btn
+        =link_to new_item_path, class:"purchase-btns__btn" do
+          .purchase-btns__btn__text
+            出品する
+          .purchase-btns__btn__box
+            =link_to image_tag('http://furima.tokyo/assets/icon_camera-968c5ebaa05319bf1e2ad7508f852dd712504a4d26a1930d8bd87ec03ebcc37a.svg', size: "54x54")
+
+
+-# .contents
+-#   .contents__message
+-#     follow me!
+-#   = link_to "https://www.facebook.com/", class: "contents__btn" do
+-#     Facebook
+-#   = link_to "https://twitter.com/", class: "contents__btn" do
+-#     Twitter
+-#   = link_to "https://www.instagram.com/", class: "contents__btn" do
+-#     Instagram
+
+
+
+-#   .purchase-btns  
+-#     =link_to new_item_path, class:"purchase-btn" do
+-#       %p.purchase-btn__text
+-#         出品する
+-#       %p.purchase-btn__box
+-#         =link_to image_tag('http://furima.tokyo/assets/icon_camera-968c5ebaa05319bf1e2ad7508f852dd712504a4d26a1930d8bd87ec03ebcc37a.svg', size: "54x54")
