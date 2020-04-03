@@ -351,9 +351,17 @@
   position: fixed;
   right: 25px;
   bottom: 25px;
-  .purchase-btn{
+  // position: relative;
+  .purchase-btns__btn{
+    // background-color: red;
+    width:105px;
+    height:108px;
     text-decoration: none;
-    &__text{
+    position: fixed;
+    right: 32px;
+    bottom: 29px;
+    z-index: 1;
+    .purchase-btns__btn__text{
       height: 27px;
       width: 97px;
       margin-bottom: 5px;
@@ -361,10 +369,19 @@
       line-height: 18px;
       text-align: center;
       color: white;
+      position: fixed;
+      right: 40px;
+      bottom: 90px;
+      z-index: 2;
+      
     }
-    &__box{
+    .purchase-btns__btn__box{
       // background-color: red;
-      padding-left: 17px;
+      padding-top: 50px;
+      position: fixed;
+      right:59px;
+      bottom: 40px;
+      z-index: 2;
     }
   }
 }
