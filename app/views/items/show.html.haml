@@ -3,13 +3,7 @@
   
 .body
   .itemInformation
-    -# ログイン状態かつ自分の商品のみ編集削除できるようにする
-    - if user_signed_in? && current_user.id == @item.user_id
-      .editDestroyLink
-        = link_to '削除', item_path(@item), method: :delete
-        = link_to '編集', edit_item_path(@item.id)
-        
-
+    
     .item
       .item__name
         = @item.name
@@ -82,6 +76,16 @@
           = link_to '#' do
             = fa_icon 'flag'
             不適切な商品の通報
+
+      .toEditDeleteBtn
+        -# ログイン状態かつ自分の商品のみ編集削除できるようにする
+        - if user_signed_in? && current_user.id == @item.user_id
+          .editLink
+            = link_to '商品を編集する', item_path(@item), method: :delete
+          .deleteLink
+            = link_to '商品を削除する', edit_item_path(@item.id)
+            
+
         
       .ToPurchasePageBtn
         - if user_signed_in? && current_user.id == @item.user_id

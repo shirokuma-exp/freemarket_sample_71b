@@ -12,24 +12,15 @@
     margin: 0 auto;
     background-color: #fff;
 
-    .editDestroyLink {
-      text-align: end;
-      a{
-        padding: 10px;
-        text-decoration: none;
-        color: #3CCACE;
-      }
-    }
-
     .item {
       padding: 20px 40px 40px;
 
 
       &__name {
         font-weight: bold;
-        font-size: 24px;
+        font-size: 30px;
         text-align: center;
-
+        margin-bottom: 20px;
       }
 
       &__image {
@@ -133,6 +124,35 @@
         color: #333;
       }
     }
+  }
+
+  .toEditDeleteBtn {
+    text-align: center;
+    
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: #ffffff;
+      width: 300px;
+      height: 50px;
+      border-radius: 10px;
+      cursor: pointer;
+      line-height: 50px;
+      background-color: #3CCACE;
+      font-size: 20px;
+    }
+    .editLink {
+      margin-top: 20px;
+      a{
+      }
+    }
+    .deleteLink {
+      margin-top: 20px;
+      a {
+      }
+    }
+
+
   }
 
   .ToPurchasePageBtn {
