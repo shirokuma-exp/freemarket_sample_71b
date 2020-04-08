@@ -28,8 +28,9 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)
     respond_to do |format|
       if @item.save
-        params[:photos][:image].each do |image|
-        @item.photos.create(image: image, item_id: @item.id)
+        @item.update(status: 1)
+        params[:item][:photos_attributes].each do |image|
+
         end
         format.html{redirect_to root_path}
         format.json
