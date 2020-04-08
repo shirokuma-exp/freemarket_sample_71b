@@ -35,11 +35,11 @@
           %tr
             %th カテゴリー
             %td.right-lists 
-              = link_to @item.category.root.name
+              = @item.category.root.name
               %br
-              = link_to @item.category.parent.name 
+              = @item.category.parent.name 
               %br
-              = link_to @item.category.name
+              = @item.category.name
           %tr
             %th ブランド
             %td
