@@ -22,9 +22,10 @@ class ItemsController < ApplicationController
         @category_parent_array = Category.where(ancestry: nil).pluck(:name)
         @category_parent_array.unshift("---")
     else
-      redirect_to user_session_path
+      redirect_to new_user_session_path
       flash[:alert] = 'ログインしてください。'
     end
+
   end
 
   def create
