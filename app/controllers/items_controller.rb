@@ -28,6 +28,7 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)
     respond_to do |format|
       if @item.save
+        @item.update(status: 1)
         params[:photos][:image].each do |image|
         @item.photos.create(image: image, item_id: @item.id)
         end
