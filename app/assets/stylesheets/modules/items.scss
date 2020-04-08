@@ -116,8 +116,6 @@
   &__frame{
     background-color: #f8f8f8;
     width: 100%;
-    // padding-top: 45px;
-    // overflow: scroll;
     &__group{
       box-sizing: border-box;
       width: 1040px;
@@ -286,7 +284,6 @@
   padding: 60px 0;
   color: white;
   &__cont{
-    // background-color: gray;
     &__text{
       height:170px;
       width: 840px;
@@ -296,7 +293,6 @@
       &__info{
         height: 100%; 
         width: 265px;
-        // background-color: sandybrown;
         &__about{  
           height: 30px;
           text-align: center;

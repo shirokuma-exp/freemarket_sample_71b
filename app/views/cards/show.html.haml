@@ -1,7 +1,8 @@
 .credit-wrapper
   = render 'items/headder'
-  - breadcrumb :card
-  = render "items/breadcrumbs"
+  .breadcrump_list
+    - breadcrumb :card
+    = render "items/breadcrumbs"
   .credit-section
     .credit-content
       .credit-content__main
@@ -28,7 +29,6 @@
                 - else
                   = link_to new_user_card_path, class: "credit-pay-way" do
                     カードを登録する
-                
           .credit-content__section__way
             = link_to "#", class: "credit-pay-way" do
               支払い方法について＞

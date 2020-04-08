@@ -1,23 +1,14 @@
-.h-header__extra__pannkuzu {
-  position: relative;
-  border-top: 1px solid #eee;
-  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
-  background: #fff;
-  z-index: 1;
-  .h-header__extra__pannkuzu__2 {
-    padding-top: 16px;
-    padding-right: 0px;
-    padding-bottom: 16px;
-    padding-left: 0px;
-    margin: 0 auto
-  }
-}
+
 
 .h-header__extra__box {
-  margin: 40px auto 0;
-  width: 1020px;
+  background-color: #f8f8f8;
+  width: 100vw;
+  height: 900px;
+  padding-top: 30px;
   .h-header__extra__box__2 {
-    float: right;
+    width: 60%;
+    margin: 0px auto;
+    background-color: #fff;
     .h-header__extra__box__2__3 {
       margin: 0;
       .h-header__extra__box__2__3__head {
