@@ -12,3 +12,5 @@ class UsersController < ApplicationController
     @search_items = @search.result(distinct: true)
   end
 end
+
+

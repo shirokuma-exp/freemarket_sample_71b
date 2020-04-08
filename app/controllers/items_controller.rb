@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_item,only: [:edit, :show, :update, :destroy, :purchase, :pay]
   before_action :move_to_index, except: [:index, :show]
+  before_action :ensure_correct_user, only: [:edit, :update]
   before_action :set_card,only: [:purchase, :pay]
   before_action :correct_buyer,only: [:purchase, :pay]
   before_action :set_search
@@ -157,6 +158,12 @@ class ItemsController < ApplicationController
   def correct_buyer
     unless @item.status == 1
       redirect_to action: :index
+    end
+  end
+
+  def ensure_correct_user
+    if @current_user.id !=  @item.user_id
+     redirect_to root_path
     end
   end
 
