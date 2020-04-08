@@ -9,6 +9,7 @@
           .purchased-content__item-box__item__image
             - @item.photos.each do |n|
               = image_tag n.image.url,class: 'purchased_image'
+              -break if i=0
           .purchased-content__item-box__item__detail
             .purchased-content__item-box__item__detail__name
               = @item.name
@@ -25,9 +26,10 @@
           .purchased-content__price-box__way__top
             %h1.purchased-content__title 支払い方法
             .purchased-content__card
-              .purchased-content__card--num
+              カード番号
+              .purchased-content__card__num
                 = "**** **** **** " + @default_card_information.last4
-              .purchased-content__card--expire
+              .purchased-content__card__expire
                 - exp_month = @default_card_information.exp_month.to_s
                 - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
                 = exp_month + " / " + exp_year
