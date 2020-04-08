@@ -29,8 +29,8 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save
         @item.update(status: 1)
-        params[:photos][:image].each do |image|
-        @item.photos.create(image: image, item_id: @item.id)
+        params[:item][:photos_attributes].each do |image|
+
         end
         format.html{redirect_to root_path}
         format.json
