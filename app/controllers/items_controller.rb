@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_item,only: [:edit, :show, :update, :destroy, :purchase, :pay]
+  before_action :move_to_index, except: [:index, :show, :new]
+  before_action :ensure_correct_user, only: [:edit, :update]
   before_action :move_to_index, except: [:index, :show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :set_card,only: [:purchase, :pay]
@@ -20,7 +22,7 @@ class ItemsController < ApplicationController
         @category_parent_array = Category.where(ancestry: nil).pluck(:name)
         @category_parent_array.unshift("---")
     else
-      redirect_to root_path
+      redirect_to user_session_path
       flash[:alert] = 'ログインしてください。'
     end
   end
