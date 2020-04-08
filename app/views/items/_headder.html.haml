@@ -13,12 +13,11 @@
       .h-header__extra__frame__lower
         .h-header__extra__frame__lower__left
           .h-header__extra__frame__lower__left__category
-            
-            =link_to 'カテゴリー', '#', class:'h-header__extra__frame__lower__left__category'
+            .h-header__extra__frame__lower__left__category
+              カテゴリー
           .h-header__extra__frame__lower__left__brand
-            -# ブランドにカーソルをかぶせるとプルダウン式に項目が出てくる
-            
-            =link_to 'ブランド','#', class:'h-header__extra__frame__lower__left__brand'
+            .h-header__extra__frame__lower__left__brand
+              ブランド
         .h-header__extra__frame__lower__right
           - if user_signed_in?
             .h-header__extra__frame__lower__right__log
