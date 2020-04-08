@@ -2,8 +2,6 @@ class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_item,only: [:edit, :show, :update, :destroy, :purchase, :pay]
   before_action :move_to_index, except: [:index, :show, :new]
-  before_action :ensure_correct_user, only: [:edit, :update]
-  before_action :move_to_index, except: [:index, :show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :set_card,only: [:purchase, :pay]
   before_action :correct_buyer,only: [:purchase, :pay]
