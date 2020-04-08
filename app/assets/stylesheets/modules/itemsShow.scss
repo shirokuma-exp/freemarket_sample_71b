@@ -206,7 +206,10 @@
     .swiches {
       display: flex;
       justify-content: space-between;
-      margin: 20px 45px;
+      padding: 20px 45px;
+      font-size: 25px;
+      color: #3CCACE;
+
   
       .previous {
         a {
