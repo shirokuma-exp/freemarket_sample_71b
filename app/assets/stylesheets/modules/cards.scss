@@ -13,6 +13,7 @@
   width: 700px;
   height: 100px;
   margin: 0 auto;
+  padding-top: 30px;
 }
 
 .credit-content{
@@ -89,18 +90,35 @@
     .add-credit-form{
       padding-bottom: 10px;
       font-weight: bold;
+      .add-credit-logo{
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+      .add-credit-number{
+        line-height:14px;
+        font-size: 1.2em;
+        color: red;
+      }
+      .add-credit-dead{
+        font-size: 1.2em;
+      }
     }
   }
   .credit-delete-btn{
-    color: rgba($color: #000000, $alpha: 0.8);
-    padding:10px 10px;
-    margin:0 -5px;
+    color: #fff;
+    background-color: #3ccace;
     font-weight: bold;
     font-size: 14px;
+    width: 80px;
+    height: 40px;
   }
-  .credit-pay-way{
-    color: #ffb340;
-    padding-top: 5px;
-    padding-bottom: 15px;
+  .credit-content__section__way{
+    display: flex;
+    justify-content: flex-end;
+    .credit-pay-way{
+      color: #ffb340;
+      padding-top: 5px;
+      padding-bottom: 15px;
+    }
   }
 }

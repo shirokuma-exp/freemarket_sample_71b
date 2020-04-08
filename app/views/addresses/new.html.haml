@@ -18,10 +18,9 @@
             -# ブランドにカーソルをかぶせるとプルダウン式に項目が出てくる
             =link_to 'ブランド','#', class:'h-header__extra__frame__lower__left__brand'
       -# 以下豊田編集
-    .h-header__extra__pannkuzu
+    .breadcrump_list
       - breadcrumb :user_address
       = render "items/breadcrumbs"
-      .h-header__extra__pannkuzu__2
     .h-header__extra__box 
       .h-header__extra__box__2
         .h-header__extra__box__2__3
@@ -53,16 +52,6 @@
                 %span.field4__arbitrary 必須
                 .field4__icon
                   = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: 'input'
-                  -# = fa_icon "chevron-down", class: "identification__form-icon"
-                -# %label 都道府県
-                -# = f.label :prefecture
-                -# %span 必須
-                -# %br/
-                -# = f.select :destination, autofocus: true, placeholder: "", class: 'login-input-text'
-                -# = f.label :都道府県, { class: 'new-registration-label' }
-                -# = f.label :必須, { class: 'form-require' }
-                -# .prefecture-select-wrap
-                -#   = f.collection_select :prefecture, Prefecture.all, :id, :name
               .field5
                 %label 本市区町村
                 = f.label :city
@@ -81,11 +70,5 @@
                 %span 任意
                 %br/
                 = f.text_field :building, autofocus: true, placeholder: "", class: 'login-input-text'
-              -# .field8
-              -#   %label 電話番号
-              -#   = f.label :phone_number
-              -#   %span 任意
-              -#   %br/
-              -#   = f.text_field :destination, autofocus: true, placeholder: "090−1234−5678", class: 'login-input-text'
               .actions
                 = f.submit "住所登録する", class: 'submit'
