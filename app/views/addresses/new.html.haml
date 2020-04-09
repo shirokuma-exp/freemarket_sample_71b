@@ -30,16 +30,16 @@
             =form_for [@user, @address] do |f|
               .field1
                 %label お名前
-                = f.label :destination
+                = f.label :name
                 %span 必須
                 %br/
-                = f.text_field :destination, autofocus: true, placeholder: "例）中森の直也", class: 'login-input-text'
+                = f.text_field :destination, autofocus: true, placeholder: "例）田中太郎", class: 'login-input-text'
               .field2
                 %label お名前かな
-                = f.label :destination_kana
+                = f.label :name_kana
                 %span 必須
                 %br/
-                = f.text_field :destination_kana, autofocus: true, placeholder: "例）なかもりのなおや", class: 'login-input-text'
+                = f.text_field :destination_kana, autofocus: true, placeholder: "例）たなかたろう", class: 'login-input-text'
               %script
               .field3
                 %label 郵便番号
