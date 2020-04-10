@@ -96,5 +96,3 @@
 |item_id|integer|null: false, foreign_key: true|
 - belongs_to :item
 - belongs_to :user
-
-フォークテスト
